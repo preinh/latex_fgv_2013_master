@@ -1,10 +1,8 @@
 # 
-# makefile para a compilação do documento
-#
-# Sáb Jun 23 21:13:37 BRT 2007
+# makefile para a compilacao do documento
 #
 
-BASE_NAME = tese-exemplo
+BASE_NAME = dissertacao
 
 LATEX     = latex
 PDFLATEX  = pdflatex
