@@ -9,6 +9,8 @@
 
 \documentclass[12pt,twoside,a4paper]{book}
 
+
+
 % ---------------------------------------------------------------------------- %
 % Pacotes 
 \usepackage[T1]{fontenc}
@@ -29,12 +31,45 @@
 \usepackage[usenames,svgnames,dvipsnames]{xcolor}
 \usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry} % margens
 %\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black,filecolor=black,bookmarksopen=true]{hyperref} % links em preto
-\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=green,bookmarksopen=true]{hyperref} % links coloridos
+%\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=green,bookmarksopen=true]{hyperref}
+\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=Green,bookmarksopen=true]{hyperref}
+% links coloridos
+
+% % links coloridos
 \usepackage[all]{hypcap}                    % soluciona o problema com o hyperref e capitulos
 \usepackage[round,sort,nonamebreak]{natbib} % citação bibliográfica textual(plainnat-ime.bst)
 \bibpunct{(}{)}{;}{a}{\hspace{-0.7ex},}{,} % estilo de citação. Veja alguns exemplos em http://merkel.zoneo.net/Latex/natbib.php
 
 \fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+
+% ---------------------------------------------------------------------------- %
+% Glossarios, Acronimos e Simbolos, 
+%\usepackage{hyperref}                    % 
+\usepackage[sanitize=none,acronym,toc]{glossaries}
+%\usepackage[acronym,toc]{glossaries}
+% Define a new glossary type
+\newglossary[slg]{symbols}{sym}{sbl}{Lista de Símbolos}
+\makeglossaries
+
+%\usepackage{imakeidx}
+\usepackage{imakeidx}
+%\makeindex
+
+
+% ---------------------------------------------------------------------------- %
+% Dicionario de Termos:
+\input{d01-terms}       
+\input{d02-symbols}       
+\input{d03-acronyms}       
+% ---------------------------------------------------------------------------- %
+
+
+
+% ---------------------------------------------------------------------------- %
+% Equações Numeradas
+\usepackage{amsmath}
+\numberwithin{equation}{section}
+%\numberwithin{equation}{subsection}
 
 % ---------------------------------------------------------------------------- %
 % Cabeçalhos similares ao TAOCP de Donald E. Knuth
@@ -104,11 +139,7 @@ framexrightmargin=10pt
 \thispagestyle{empty}
 \begin{center}
     \vspace*{2.3cm}
-    \textbf{\Large{Estudo comparativo de diferentes \\
-			técnicas de suavização para a determinação da \\ 
-		    taxa de sismicidade no território brasileiro \\
-		    aplicadas à caracterização de fontes sísmicas para \\
-		    análise probabilistica de risco sísmico}}\\
+    \textbf{\Large{\glsdesc*{titulo_da_dissertacao}}}\\
     
     \vspace*{1.2cm}
     \Large{Marlon Pirchiner}
@@ -151,11 +182,7 @@ framexrightmargin=10pt
 \thispagestyle{empty}
     \begin{center}
         \vspace*{2.3 cm}
-	    \textbf{\Large{Estudo comparativo de diferentes \\
-			técnicas de suavização para a determinação da \\ 
-		    taxa de sismicidade no território brasileiro \\
-		    aplicadas à caracterização de fontes sísmicas para \\
-		    análise probabilistica de risco sísmico}}\\
+	    \textbf{\Large{\glsdesc*{titulo_da_dissertacao}}}\\
         \vspace*{2 cm}
     \end{center}
 
@@ -220,6 +247,8 @@ framexrightmargin=10pt
 
 \pagenumbering{roman}     % começamos a numerar 
 
+
+
 % ---------------------------------------------------------------------------- %
 % Agradecimentos:
 % Se o candidato não quer fazer agradecimentos, deve simplesmente eliminar esta página 
@@ -238,11 +267,7 @@ Aos meus amigos e familiares pela benevolência de sempre.
 % Resumo
 \chapter*{Resumo}
 
-\noindent PIRCHINER, M. \textbf{Estudo comparativo de diferentes 
-			técnicas de suavização para a determinação da 
-		    taxa de sismicidade no território brasileiro 
-		    aplicadas à caracterização de fontes sísmicas para 
-		    análise probabilistica de risco sísmico}. 
+\noindent PIRCHINER, M. \textbf{\glsdesc*{titulo_da_dissertacao}}. 
 2014. 120 f.
 Dissertação (Mestrado) - Escola de Matemática Aplicada,
 Fundação Getúlio Vargas, Rio de Janeiro, 2014.
@@ -268,21 +293,16 @@ earthquake engineering.
 \noindent PIRCHINER, M. \textbf{Long-term non-parametric probabilistic seismic
 hazard analysis for Brazil}.
 2014. 120 f.
-Tese (Doutorado) - Instituto de Matemática e Estatística,
-Universidade de São Paulo, São Paulo, 2010.
+Dissertação (Mestrado) - Escola de Matemática Aplicada,
+Fundação Getúlio Vargas, Rio de Janeiro, 2014.
 \\
 
 Elemento obrigatório, elaborado com as mesmas características do resumo em
 língua portuguesa. De acordo com o Regimento da Pós- Graduação da USP (Artigo
 99), deve ser redigido em inglês para fins de divulgação. 
-Text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text.
-Text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text
-text text text.
-\\
+
+
+
 
 \noindent \textbf{Keywords:} keyword1, keyword2, keyword3.
 
@@ -290,27 +310,41 @@ text text text.
 % Sumário
 \tableofcontents    % imprime o sumário
 
-% ---------------------------------------------------------------------------- %
-\chapter{Lista de Abreviaturas}
-\begin{tabular}{ll}
-         CFT         & Transformada contínua de Fourier (\emph{Continuous Fourier Transform})\\
-         DFT         & Transformada discreta de Fourier (\emph{Discrete Fourier Transform})\\
-        EIIP         & Potencial de interação elétron-íon (\emph{Electron-Ion Interaction Potentials})\\
-        STFT         & Tranformada de Fourier de tempo reduzido (\emph{Short-Time Fourier Transform})\\
-\end{tabular}
+% Lista de Abreviaturas
+\printglossary[type=\acronymtype,title=Lista de Abreviaturas]
+
+% Lista de Simbolos
+\printglossary[type=symbols,title=Lista de Símbolos]
+
+%\printglossaries
+%\printglossaries
+
 
 % ---------------------------------------------------------------------------- %
-\chapter{Lista de Símbolos}
-\begin{tabular}{ll}
-        $\lambda$   & Seismic Rate\\
-        $\psi$      & Função de análise \emph{wavelet}\\
-        $\Psi$      & Transformada de Fourier de $\psi$\\
-\end{tabular}
+%\chapter{Lista de Abreviaturas}
+%\begin{tabular}{ll}
+%         CFT         & Transformada contínua de Fourier (\emph{Continuous Fourier Transform})\\
+%         DFT         & Transformada discreta de Fourier (\emph{Discrete Fourier Transform})\\
+%        EIIP         & Potencial de interação elétron-íon (\emph{Electron-Ion Interaction Potentials})\\
+%        STFT         & Tranformada de Fourier de tempo reduzido (\emph{Short-Time Fourier Transform})\\
+%\end{tabular}
+
+% ---------------------------------------------------------------------------- %
+%\chapter{Lista de Símbolos}
+%\begin{tabular}{ll}
+%        $\lambda$   & Seismic Rate\\
+%        $\psi$      & Função de análise \emph{wavelet}\\
+%        $\Psi$      & Transformada de Fourier de $\psi$\\
+%\end{tabular}
+
+
+
 
 % ---------------------------------------------------------------------------- %
 % Listas de figuras e tabelas criadas automaticamente
 \listoffigures            
 \listoftables            
+
 
 % ---------------------------------------------------------------------------- %
 % Capítulos do trabalho
@@ -325,13 +359,13 @@ text text text.
 
 % ============================================================================ %
 
-\input c01-introducao        % associado ao arquivo: 'cap-introducao.tex'
-\input c02-conceitos         % associado ao arquivo: 'cap-conceitos.tex'
-\input c03-regiao        % associado ao arquivo: 'cap-conclusoes.tex'
-\input c04-metodologia        % associado ao arquivo: 'cap-introducao.tex'
-\input c05-processamento         % associado ao arquivo: 'cap-conceitos.tex'
-\input c06-resultados        % associado ao arquivo: 'cap-conclusoes.tex'
-\input c07-conclusoes        % associado ao arquivo: 'cap-conclusoes.tex'
+\input{c01-introducao}        % associado ao arquivo: 'cap-introducao.tex'
+\input{c02-conceitos}         % associado ao arquivo: 'cap-conceitos.tex'
+\input{c03-regiao}        	  % associado ao arquivo: 'cap-conclusoes.tex'
+\input{c04-metodologia}       % associado ao arquivo: 'cap-introducao.tex'
+\input{c05-processamento}     % associado ao arquivo: 'cap-conceitos.tex'
+\input{c06-resultados}        % associado ao arquivo: 'cap-conclusoes.tex'
+\input{c07-conclusoes}        % associado ao arquivo: 'cap-conclusoes.tex'
 
 % ============================================================================ %
 
@@ -355,11 +389,11 @@ text text text.
 
 % ---------------------------------------------------------------------------- %
 % Índice remissivo
-\index{TBP|see{periodicidade região codificante}}
-\index{DSP|see{processamento digital de sinais}}
-\index{STFT|see{transformada de Fourier de tempo reduzido}}
-\index{DFT|see{transformada discreta de Fourier}}
-\index{Fourier!transformada|see{transformada de Fourier}}
+%\index{TBP|see{periodicidade região codificante}}
+%\index{DSP|see{processamento digital de sinais}}
+%\index{STFT|see{transformada de Fourier de tempo reduzido}}
+%\index{DFT|see{transformada discreta de Fourier}}
+%\index{Fourier!transformada|see{transformada de Fourier}}
 
 \printindex   % imprime o índice remissivo no documento 
 

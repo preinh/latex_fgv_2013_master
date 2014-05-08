@@ -2,32 +2,41 @@
 \chapter{Metodologia}
 \label{cap:metodolodia}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto.
 
 %% ------------------------------------------------------------------------- %%
-\section{Apresentação}\index{área do trabalho!fundamentos}
-\label{sec:fundamentos}
+\section{Apresentação}
+%\index{área do trabalho!fundamentos}
+\label{sec:c04_apresentacao}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto.
 
+Neste capítulo apresenta-se a formalização das metodologias aplicadas na fase 
+processamento \ref{cap:processamento}. Essencialmente das \gls{smoothing} empregadas.
 
 %% ------------------------------------------------------------------------- %%
-\section{Técnicas de Suavização}\index{área do trabalho!fundamentos}
-\label{sec:fundamentos}
+\section{\Gls{smoothing}}
+\index{suavização!fundamentos, metodologia}
+\label{sec:04_smoothing_general}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
+As \gls{smoothing} em geral, permitem extrair feições importantes do conjunto de dados.
+
+Quando aplicadas à caracterização das \glspl{seismic_source} em \gls{psha},
+permitem gerar um conjunto de \glspl{point_source} 
+caracterizadas pela determinação suavizada das \glspl{seismic_rate} 
+nos pontos de uma malha regular. 
+
+Na prática, a essencia da técnica é aplicar uma \gls{kernel_function} como na equação \ref{eq:kernel}
+
+\begin{equation}
+K(x)
+\label{eq:kernel}
+\end{equation}
+
+
+Texto \ref{eq:kernel} texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto.
+
+bla bla \eqref{eq:emc} \ldots
 
 
 %% ------------------------------------------------------------------------- %%
