@@ -25,6 +25,7 @@
 \usepackage{type1cm}                    % fontes realmente escaláveis
 \usepackage{listings}                   % para formatar código-fonte (ex. em Java)
 \usepackage{titletoc}
+\usepackage{float}
 %\usepackage[bf,small,compact]{titlesec} % cabeçalhos dos títulos: menores e compactos
 \usepackage[fixlanguage]{babelbib}
 \usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
@@ -32,6 +33,7 @@
 \usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry} % margens
 %\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black,filecolor=black,bookmarksopen=true]{hyperref} % links em preto
 %\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=green,bookmarksopen=true]{hyperref}
+%hyperref
 \usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=Green,bookmarksopen=true]{hyperref}
 % links coloridos
 
@@ -48,19 +50,20 @@
 \usepackage[sanitize=none,acronym,toc]{glossaries}
 %\usepackage[acronym,toc]{glossaries}
 % Define a new glossary type
-\newglossary[slg]{symbols}{sym}{sbl}{Lista de Símbolos}
+\newglossary[slg,toc]{symbols}{sym}{sbl}{Lista de S\'imbolos}
+\newglossary[elg]{equations}{eqn}{eql}{Equations}
 \makeglossaries
 
 %\usepackage{imakeidx}
-\usepackage{imakeidx}
-%\makeindex
-
+\usepackage{imakeidx} % para o índice remissivo
+\makeindex[intoc]    
 
 % ---------------------------------------------------------------------------- %
 % Dicionario de Termos:
 \input{d01-terms}       
 \input{d02-symbols}       
 \input{d03-acronyms}       
+\input{d04-equations}       
 % ---------------------------------------------------------------------------- %
 
 
@@ -84,7 +87,6 @@
 \graphicspath{{./images/}}             % caminho das figuras (recomendável)
 \frenchspacing                          % arruma o espaço: id est (i.e.) e exempli gratia (e.g.) 
 \urlstyle{same}                         % URL com o mesmo estilo do texto e não mono-spaced
-\makeindex                              % para o índice remissivo
 \raggedbottom                           % para não permitir espaços extra no texto
 \fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
 \cleardoublepage
@@ -146,14 +148,10 @@ framexrightmargin=10pt
     
     \vskip 2cm
     \textsc{
-    Dissertação apresentada\\[-0.25cm] 
-    à\\[-0.25cm]
-    Escola de Matemática Aplicada\\[-0.25cm]
-    da\\[-0.25cm]
+    Dissertação apresentada à\\[-0.25cm] 
+    Escola de Matemática Aplicada da\\[-0.25cm]
     Fundação Getúlio Vargas-RJ\\[-0.25cm]
-    para\\[-0.25cm]
-    obtenção do título\\[-0.25cm]
-    de\\[-0.25cm]
+    para obtenção do título de \\[-0.25cm]
     Mestre em Ciências}
     
     \vskip 1.5cm
@@ -314,7 +312,7 @@ língua portuguesa. De acordo com o Regimento da Pós- Graduação da USP (Artig
 \printglossary[type=\acronymtype,title=Lista de Abreviaturas]
 
 % Lista de Simbolos
-\printglossary[type=symbols,title=Lista de Símbolos]
+\printglossary[type=symbols,title=Lista de S\'imbolos]
 
 %\printglossaries
 %\printglossaries
@@ -395,6 +393,10 @@ língua portuguesa. De acordo com o Regimento da Pós- Graduação da USP (Artig
 %\index{DFT|see{transformada discreta de Fourier}}
 %\index{Fourier!transformada|see{transformada de Fourier}}
 
-\printindex   % imprime o índice remissivo no documento 
+% Glossário
+\printglossary[title=Gloss{á}rio,toctitle=Gloss{á}rio]
+
+% índice remissivo no documento 
+\printindex
 
 \end{document}

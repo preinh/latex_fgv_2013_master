@@ -8,6 +8,12 @@
 	plural={terremotos}
 }
 
+\newglossaryentry{seismicity}
+{
+	name={sismicidade},
+	description={ocorrência dos tremores},
+}
+
 \newglossaryentry{hypocenter}
 {
 	name={hipocentro},
@@ -130,7 +136,6 @@
 				 podendo ser usadas como estimativas para 
 				 funções de densidade de probabilidade},
 	plural={funções de kernel},
-	see={\gls{pdf}}
 }
 
 \newglossaryentry{seismic_rate}
@@ -138,14 +143,12 @@
 	name={taxa de sismicidade},
 	description={taxa com que terremotos são produzidos por determinada \gls{seismic_source}},
 	plural={taxas de sismicidade},
-	see={seismic_source, equake}	
 }
 
 \newglossaryentry{seismic_activity}
 {
 	name={atividade sísmica},
 	description={frequ{ê}cia de ocorr{ê}ncia de \glspl{equake}},
-	see={\gls{seismic_source}}	  
 }
 
 \newglossaryentry{pdf}
@@ -157,16 +160,14 @@
 \newglossaryentry{poisson_process}
 {
 	name={processo de Poisson},
-	description={uma sequencia de experimentos de Bernoulli com taxa \gls{sym:lambda}},
-	see={\glsdesc{sym:lambda}}
+	description={uma sequencia de intervalos discretos com um experimento de Bernoulli em cada},
 }
 
 \newglossaryentry{seismic_source}
 {
 	name={fonte sísmica},
 	description={estrutura geológica capaz de produzir tremores de terra},
-	plural={fontes sísmicas},
-	see={equake}	
+	plural={fontes sísmicas}
 }
 
 \newglossaryentry{point_source}
@@ -174,7 +175,6 @@
 	name={fonte sísmica pontual},
 	description={representação geométrica por um ponto, de uma fonte sísmica},
 	plural={fontes sísmicas pontuais},
-	see={seismic_source}	
 }
 
 
@@ -184,7 +184,6 @@
 	description={representação geométrica por um poligono em súperfície, 
 				 de uma fonte sísmica},
 	plural={fontes sísmicas poligonais},
-	see={seismic_source}	
 }
 
 \newglossaryentry{titulo_da_dissertacao}
