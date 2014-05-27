@@ -1,5 +1,5 @@
 %% ------------------------------------------------------------------------- %%
-\chapter{Contexto Teórico}
+\chapter{Conceitos}
 \label{cap:conceitos}
 
 Este capítulo apresenta, um a um, os conceitos mais elementares, 
@@ -397,15 +397,6 @@ Entretanto, a distribuição clássica de \gls{gr} não impunha restrições sob
 ou superior $m_{max}$ à validade da distribuição.
 
 
-A figura \ref{f:mfd} apresenta um comparativo de algumas distribuições. Para ilustração, há também um histograma de um catálogo de
-uma pequena região do norte do Chile, onde se pode observar que tanto a porção inferior (em torno de $m=5$), como a porção
-posterior ($m > 7$) do histograma não seguem perfeitamente a distribuição. Há essencialmente duas zonas críticas em que é preciso
-estar atento à física do problema:
-(a) na parte inferior, muitos sismos de magnitude pequena não são registrados, pois não tem energia suficiente para sensibilizar
-um conjunto razoável de estações que permita determinar suas localizações; (b) a parte superior, por sua vez, é crítica por se
-acoplar diretamente aos limites físicos do tamanho da maior ruptura possível, relacionada diretamente ao limite de liberação de energia 
-na forma de momento sísmico $M_0$.
-
 
 \subsubsection{MFD Truncada}
 \index{MFD Truncada}
@@ -471,131 +462,153 @@ A figura \ref{f:mfd} mostra a diferença entre algumas dessas distribuições
    \label{f:mfd}
 \end{figure} 
 
+A figura \ref{f:mfd} apresenta um comparativo de algumas distribuições. Para ilustração, há também um histograma de um catálogo de
+uma pequena região do norte do Chile, onde se pode observar que tanto a porção inferior (em torno de $m=5$), como a porção
+posterior ($m > 7$) do histograma não seguem perfeitamente a distribuição. Há essencialmente duas zonas críticas em que é preciso
+estar atento à física do problema:
+(i) na parte inferior, muitos sismos de magnitude pequena não são registrados, seja por não terem energia suficiente
+para sensibilizar um conjunto razoável de estações que permitam determinar suas localizações, seja porque o número de
+estações é insuficiente na região onde os pequenos tremores ocorrem; (ii) a parte superior, por sua vez, é crítica
+por se acoplar diretamente aos limites físicos do tamanho da maior ruptura possível, relacionada diretamente ao limite de liberação de energia na forma de momento sísmico $M_0$.
+
+Nas distribuições de magnitude e frequência é importante que se possa reconhecer claramente alguns parâmetros
+fundamentais.
+
+\subsection{Valor-b}
+\index{valor-b}
+\label{sec:b_value}
+
+O \emph{valor-b} foi apresentado nesta seção como a inclinação da reta que representa a parte plana descrescente da
+distribuição. Representa a proporção de sismos pequenos e catastróficos que uma determinada fonte sísmica é capaz de
+produzir.
 
 
-\section{Taxa de Sismicidade}\index{área do
-trabalho!fundamentos}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.50\textwidth]{occurrence}
+   \caption[Distribuição incremental e cumulativa de frequencia e magnitude dos sismos presentes no catálogo ISC-GEM
+   para a América do Sul unido com o BSB2013]
+   {Distribuição incremental e cumulativa de frequencia e magnitude dos sismos presentes no catálogo ISC-GEM
+   para a América do Sul unido com o BSB2013} 
+   \label{f:occurrence}
+\end{figure} 
+%\footnotetext{\citet{img_opensha_rupture}}
+ 
+
+
+
+
+\subsection{Taxa de Sismicidade}
+\index{taxa de sismicidade}
+\label{sec:seismic_rate}
+
+A taxa de sismicidade é a medida da ocorrência dos tremores por uma determinada unidade de tempo (geralmente anos).
+Representa para cada magnitude, a frequência média de ocorrência (\gls{sym:lambda} do processo de Poisson).
+
+\subsection{Valor-a}
+\index{valor-a}
+\label{sec:a_value}
+
+O \emph{valor-a} é a projeção da \gls{mfd} no eixo das frequências e representa o nível geral de sismos
+que as fontes observadas pelo catálogo são capazes de produzir.
+
+Costuma ser confundido pela forma de representação adotadas para a distribuição (incremental e/ou
+cumulativa) e pelos truncamentos onde por vezes se apresenta o valor-a como a taxa de sismicidade da 
+magnitude mínima ou de completude do catálogo.
+
+No presente trabalho o valor-a significará sempre o valor-a da distribuição cumulativa de sismos por unidade de tempo
+com magnitudes positivas.
+
+\subsection{Magnitude de Completude}
+\index{magnitude de completude}
+\label{sec:completeness}
+
+A magnitude de completude é o valor mínimo para o qual a distribuição é capaz de observar o conjunto completo dos
+sismos. Em outras palavras representa o limite de observação completa do catálogo.
+
+Sua identificação é bem simples quando se observa a distribuição incremental de magnitudes. É facilmente notado o valor
+de magnitude na porção inferior na qual o número de sísmos registrados começa a divergir da tendência geral da
+distribuição.
+
+Seu mapeamento é importante uma vez que os métodos de ajuste e determinação dos parâmetros da distribuição baseados na
+máxima verossimilhança (REFERENCIA) dependem fundamentalmente desse valor mínimo.
+
+
+
+FIGURA SouthAm ISC-GEM
+
+
+
+\section{Risco Sísmico}
+\index{Risco Sísmico}
 \label{sec:risco_sismico}
 
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-\subsubsection{Magnitude de Completude}\index{área do
-trabalho!fundamentos}
-\label{sec:risco_sismico}
-
-A magnitude de completude\ldots 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-GRAFICO
-
-FORMULA
-
-
-
-\subsubsection{Valor-b}\index{área do
-trabalho!fundamentos}
-\label{sec:risco_sismico}
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-\subsubsection{Valor-a}\index{área do
-trabalho!fundamentos}
-\label{sec:risco_sismico}
-
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-
-\section{Risco Sísmico}\index{área do trabalho!fundamentos}
-\label{sec:risco_sismico}
-
--> risk = ( hazard, 
-			exposition, 
-			vulnerability)
-
-
-A redução do risco sísmico é um problema complexo, que envolve geralmente muitas pessoas, informações, decisões e ações.
+A redução do risco sísmico é um problema complexo que envolve geralmente muitas pessoas, informações, decisões e ações.
 
 A palavra risco, ao pé da letra, significa a exposição à possibilidade de injúria ou perda. E geralmente é usada como
-sinônimo de ameaça. Na literatura acerca do tema risco, inclusive, as palavras são usadas com certa confusão.
+sinônimo de ameaça. Na literatura acerca do tema risco, inclusive, as palavras risco e ameaça são usadas com certa
+confusão.
 
 No glossário da EERI (EERI Committee on Seismic Risk, 1984) a definição de risco sísmico é a probabilidade de que
-perdas sociais ou econômicas aconteçam como decorrência de tremores superem limiares estabelecidos para determinado
-local ou região durante um certo período de exposição.
+perdas sociais ou econômicas aconteçam como decorrência de tremores por superarem limiares estabelecidos para
+determinado local ou região durante um certo período de exposição.
 
 A ameaça sísmica, por outro lado, é qualquer fenômeno físico (oscilação, falhamento) associado à terremotos que possam
 produzir efeitos adversos às atividades humanas. Na prática são avaliados por dadas probabilidades de ocorrência.
 
-Do que se pode deduzir que o risco sísmico é um produto da ameaça sísmica:
+Do que se pode deduzir que o risco sísmico é uma combinação da ameaça sísmica com outros fatores:
 
-Seismic Risk = Seismic Hazard × Vulnerability × Value (1.1)
+\begin{equation}
+		Seismic Risk = Seismic Hazard \ast Vulnerability \ast Exposed Value
+	\label{eq:risk}
+\end{equation}
 
-where vulnerability is the amount of damage induced by a given degree of hazard and expressed as a fraction of the value of the
-damaged item under consideration. The × symbols in Eq. (1.1) do not represent multiplication, in fact, how seismic hazard,
-vulnerability and value are to be combined depends on how they are expressed. Different ways to do so have been adopted in the
-numerous procedures proposed in the literature (Dowrick, 2003) . To better understand the meaning of Eq. (1.1) it is worth
-considering an example. One of the most complete risk assessment frameworks recently proposed is the PEER’s performance based
-earthquake engineering methodology (Porter, 2003).
+onde a vulnerabilidade é a quantidade de danos induzidos por um dado grau de ameaça e expressa como uma fração do
+valor exposto ao dano e varia de acordo com o modelo proposto.
 
-The principal outputs of PEER’s approach are system-level performance measures: probabilistic estimates of repair costs,
-casualties, and loss-of-use duration (“dollars, deaths, and downtime”). The objective of the methodology is to estimate 
-the frequency with which a particular performance metric will exceed various levels for a given design at a given
-location. These can be used to create probability distributions of the
-performance measures during any planning period of interest. From the frequency and probability distributions can be
-extracted simple point performance metrics that are meaningful to facility stakeholders, such as an upper-bound economic loss during the owner-investor’s planning period. Figure 1.1 illustrates the PEER methodology. As it shows, PEER’s PBEE approach involves four stages: hazard analysis, structural analysis, damage analysis, and loss analysis. In the figure, the expression p[X|Y] refers to the probability density of X conditioned on knowledge of Y, and g[X|Y] refers to the occurrence frequency of X given Y (equivalent to the negative first derivative of the frequency with which X is exceeded, given Y). Eq. (1.2) frames the PEER methodology mathematically. Note that Figure 1.1 omits conditioning on D after the hazard analysis for brevity, but it is nonetheless implicit.
+Frequentemente, o fator vulnerabilidade advém das análises das (ii) respostas das estruturas edificadas ao espectro de
+acelerações produzidos pela (i) provável ameaça sísmica e da análise de possíveis (iii) danos estruturais à edificação.
 
-Eq. (1.2) can be considered as a specialization of Eq. (1.1): hazard maintains the same meaning, vulnerability is
-expressed as the combination of the results of two stages, structural analysis and fragility analysis, and value is
-evaluated by the loss analysis. Within this framework the × symbol represents convolution.
-Seismic fragility and vulnerability of structures will be described in greater detail in the second part of this
-dissertation, while this part is focused on seismic hazard assessment and on defining input for structural analysis in
-terms of accelerograms.
-For design or risk assessment purposes the assessment of seismic hazard consists of the following basic steps:
-− definition of the nature and location of earthquake sources
-− magnitude-frequency relationships for the sources
-− attenuation of ground motion with distance from source
-− determination of ground motions at the site having the required probability
-of exceedance.
-
-Because seismic risk and hazard statements are essentially forecasts of future situations, they are inherently
-uncertain. Seismic hazard assessment attempts to forecast the likely future seismic activity rate and strengths, based
-on knowledge of the past and present, and significant uncertainties arise partly because the processes involved are not
-fully understood and partly because relevant data are generally scarce and variable in quality. For reasonable
-credibility considerable knowledge of both historical seismicity and geology need to be used, together with an 
-appropriate analysis of uncertainties. Where available other geophysical or seismological knowledge, such as  crustal
-strain studies, may also be helpful, particularly in evaluating regional seismic activity patterns.
-
-The present chapter introduces the basis of the procedures that may be used to assess seismic hazard, giving particular
-relevance to Probabilistic Seismic Hazard Analysis (PSHA). Some of the concepts described here (e.g. hazard curve,
-xattenuation relationship, disaggregation) will be widely used in the following chapters of the present work.
+A decisão de alterar ou não o desenho estrutural das edificações é feito a partir da análise dos (iv) prejuízos
+(quantidade de moeda, mortes, tempo inoperante) causados caso as estruturas sejam danificadas conforme as análises anteriores.
 
 
-\section{Ameaça Sísmica}\index{área do trabalho!fundamentos}
+\section{Ameaça Sísmica}
+\index{ameaça sísmica}
 \label{sec:ameaca_sismica}
 
--> hazard = seismic sources, 
-			rupture occurence, 
-			ground motion prediction 
+A ameaça sísmica poderia ser definida de mode geral como a possibilidade de ocorrer efeitos potencialmente destrutivos
+de um terremoto em uma particular localização. Com exceção de \textit{tsunamis} ou falhamentos geológicos superficiais,
+todos os efeitos destrutivos de um tremor de terra estão diretamente relacionados ao movimento do chão induzido pela
+passagem das ondas sísmicas. Existem, entretanto diferenças de abordagem para a avaliação da ameaça sísmica.
 
+A \gls{psha} foi introduzida por Cornell (1968) e se tornou técnica mais amplamente usada para a avaliação da
+ameaça sísmica, mas também se pode fazer a avaliação através de cenários determinísticos definidos pelo espectro de
+movimento forte do chão que pode ser caudado pela ocorrÊncia de um determinado tremor de terra em certa localização e
+de certa magnitude. O possível movimento forte no local de interesse é avaliado através de relações de atenuação ou
+\gls{gmpe}.
+
+Os mecanismos da \gls{psha} são menos óbvios do que os da \gls{dsha} e em essência significam identificar todos os
+possíveis tremores que podem afetar o local de interesse, incluíndo todas as possíveis combinações de distâncias e
+caracterizar a frequência de ocorrência das diferentes magnitudes através de relações de recorrência. As equações de
+atenuação são utilizadas para calcular os parâmetros do movimento do chão no local de interesse devido a esses tremores
+e consequentemente a taxa com que diferentes níveis de movimento do chão ocorram no local de interesse. 
+
+Seus resultados também apresentam certa distinção. Se por um lado a \gls{psha} traz consigo o aspecto temporal, ou a
+taxa com que diferentes níveis de aceleração excederão determinado limiar em determinado local de interesse,
+por outro, a \gls{dsha} apresenta o movimento do chão esperado quando ocorra determinado evento de controle.
+
+TODO:
+(Cornell, 1968) 
+DSHA  (Reiter, 1990; Kramer,1996; Krinitzsky, 2002)
+
+(Cornell, 1968;  Bazzurro and Cornell, 1999; Abrahamson, 2000b; Hanks and Cornell, 2001; Abrahamson, 2006) 
+
+differences bommer, 1998
  
 \subsection{Projeção da Ocorrência de Rupturas}
-\index{área do trabalho!fundamentos}
-\label{sec:fundamentos}
+\index{projeção de ocorrência de rupturas}
+\label{sec:projecao}
 
 As projeções (\textit{forecasting}) são feitas para se estimar a ocorrência de futuros tremores,
 principalmente dos maiores, com grandes chances de provocar perdas.
@@ -604,7 +617,7 @@ Nas de curto prazo, estimam-se os próximos tremores
 numa escala de dias ou horas considerando uma taxa de sismicidade variável 
 com o tempo como no caso dos pré e pós-abalos, ou de quando 
 acontece um enxame sísmico, período de maior atividade numa região.
-Sua principal aplicação são para tomada de decisões de curto período, 
+Sua principal aplicação é a auxiliar na tomada de decisões de curto período, 
 como evacuação de edifícios.
 
 Nas de longo prazo, foco desse texto, a principal consideração feita é de que a 
@@ -616,160 +629,126 @@ se deseja saber o nível de segurança e resistência estrutural que devem ser i
 ou outros grandes investimentos industriais, como usinas nucleares.
 
 
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\section{Análise Probabilistica de Ameaça Sísmica}\index{área do
-trabalho!fundamentos}
+\section{Análise Probabilística de Ameaça Sísmica}
+\index{PSHA, Análise Probabilística de Ameaça Sísmica}
 \label{sec:psha}
 
+Na \gls{psha} são considerados todos os possíveis tremores, as rupturas que os originaram e os movimentos do chão
+resultantes conjuntamente com suas probabilidades de ocorrência associadas de modo a encontrar o nível de movimento do
+chão que será excedido com uma determinada baixa tolerância (BAKER)
 
-cornell, mcguire ?!?
+Se por um lado Cornell foi um dos pioneiros em desenvolver e apresentar a medotologia da \gls{psha}, McGuire (1976)
+introduziu importantes elementos com seu software EQRISK. Mas fundamentalmente o método consiste de dois pilares, o
+primeiro é a definição de zonas sismogênicas como áreas ou linhas em cuja sismicidade deveria ser considerada
+espacialmente uniforme. O segundo é o pressuposto de que a sismicidade pode ser representada por um processo de Poisson.
+Os dois têm sido de uma maneira ou outra questionados e pesquisadores ainda propõem alternativas.
 
+Uma \gls{psha} pode ser separada em cinco passos para uma melhor compreensão:
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+\begin{itemize}
+\item Identificar todas as fontes sísmicas capazes de produzir movimentos do chão potencialmente danosos.
+\item Caracterizar a distribuição de magnitudes (taxa de esperada de ocorrência para cada magnitude possível de tremor).
+\item Caracterizar a distribuição de distâncias dos tremores ao local de interesse associada com cada potencial fonte
+sísmica.
+\item Prever a distribuição resultante da intensidade do movimento do chão devido à distância do tremor, à
+magnitude, à condições geológicas do local de interesse, etc.
+\item Combinar as incertezas dos prováveis locais de origem, das prováveis magnitudes e dos prováveis movimentos
+do chão causados pelos tremores de terra usando o teorema da probabilidade total.
+\end{itemize}
 
-
+Os diferentes métodos de \gls{psha} variam propondo alterações em uma ou mais de uma dessas etapas detalhadas a seguir.
 
 %% ------------------------------------------------------------------------- %%
-\subsection{Caracterização de Fontes Sísmicas}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fontes}
-
-cornell, mcguire ?!?
+\subsection{Identificação das fontes sísmicas}
+\index{\gls{psha}!identificação das fontes}
+\label{sec:psha_sources}
 
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
+Para identificar fontes sísmicas são utilizados desde registros históricos de sismicidade à evidências geológicas de
+falhamentos/rupturas datados com deslocamento e magnitudes inferidos e busca-se aproveitar de toda informação relevante
+disponível, como a medida secular de deslocamento relativo entre observaçõe geodésicas contínuas ou mesmo da sismicidade recente.
 
 
 \subsubsection{Tipologia e Representação Geométrica}
-\index{ácido!nucléico}\index{nucleotídeos}
+\index{Tipologia e Representação Geométrica}
 \label{sec:fontes_tipologia}
+
+Quando se identifica uma fonte sísmica é comum representá-la segundo uma forma geométrica mais consistente com o
+conjunto das observações disponíveis para descrever as possíveis rupturas.
+
+\subsubsection{Ponto}
+\index{fonte sísmica!ponto}
+\label{sec:point_source}
+
+Se apenas se conhece a localização isolada de um tremor antigo, com magnitude e com mecanismo de falhamento conhecido,
+é possível representá-lo como uma fonte sísmica de tipo pontual. Nesse tipo de fonte são definidos os limites superior e
+inferior da ruptura, sua orientação e tipo de falhamento (quando disponíveis) e o hipocentro é definido a partir do
+centro de cada ruptura.
+
+\subsubsection{Área}
+\index{fonte sísmica!área}
+\label{sec:area_source}
+
+Quando o conhecimento sobre a geologia, a tectônica, ou mesmo a correlação espacial dos tremores no catálogo, permitam
+o delineamento de zonas com características sísmicas comuns, se costuma representar como áreas com forma poligonal onde
+por fim serão discretizadas como um conjunto de fontes sísmicas de característica pontual distribuída uniformemente por
+toda área.
+
+\subsubsection{Falha Simples}
+\index{fonte sísmica!falha simples}
+\label{sec:simple_fault_source}
+
+Muitas vezes os parâmentros de um falhamento ativo são claramente conhecidos e monitorados. Isso permite uma maior
+especificidade na representação da fonte sísmica, diminuindo, por exemplo, as incertezas na orientação das rupturas.
+Nesse caso a geometria da falha se caracteriza pela projeção do traço de falha na superfície e pelos limites superior e
+inferior da ruptura no plano de mergulho.
 
 
 \subsubsection{Falha Complexa}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fonte_falha_complexa}
+\index{fonte sísmica!falha complexa}
+\label{sec:complex_fault_source}
+
+Casos de sismicidade mais complexa como zonas de subdução ou encontro de placas, tem uma sismicidade mais complexa,
+gerada por estruturas maiores e mais proundas que apresentam geralmente variações laterais de mergulho, acúmulo de
+esforços, orientação, etc. Fontes sísmicas em situações como essa são modeladas por como múltiplos segmentos simples e
+unidos de forma suave.
 
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+\subsection{Caracterização da \gls{mfd}}
+\index{caracterização da \gls{mfd}}
+\label{sec:psha_mfd}
+
+Conhecida a fonte sísmica e sua representação geométrica, é preciso caracterizar sua capacidade sismogênica determinando
+uma (ou mais) possíveis \gls{mfd} a que se ajustam as observações. Isso inclui a forma da distribuição, a taxa geral de
+sismicidade (valor-a) e frequentemente as magnitudes mínima e máxima. 
+
+\subsection{Caracterização da Distribuição de Distâncias}
+\index{caracterização da distribuição de distâncias}
+\label{sec:psha_distances}
+
+Dados um local de interesse e uma provável ruptura em uma fonte sísmica, é necessário calcular a distribuição das
+distâncias da fonte ao local de interesse.
+
+É necessário calcular a distribuição da distância das possíveis rupturas em uma fonte sísmica à um determinado local de
+interesse.
 
 
-
-\subsubsection{Falha Simples}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fonte_falha_complexa}
-
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\subsubsection{Área}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fonte_falha_complexa}
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\subsubsection{Pontos}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fonte_falha_complexa}
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\subsection{Caracterização}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fontes}
-
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\subsubsection{Ocorrência de Sismicidade}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fontes}
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-\subsubsection{Ocorrência de Sismicidade}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fontes}
-
-
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\subsubsection{Caracterização de Fontes Sísmicas}
-\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:fontes}
-
-
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-
-
-%% ------------------------------------------------------------------------- %%
-\subsection{Predição do Movimento do Chão} 
-\index{Equação de Predição do Movimento do Chão}
-\index{gmpe}
+\subsection{Predição do Movimento do Chão}
+\index{predição do movimento do chão}
 \label{sec:gmpe}
 
+Para se estimar os possíveis níveis de movimento do chão causados por eventos de uma determinada magnitude à uma certa
+distância do local de interesse são utilizadas as \glspl{gmpe}.
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+forma geral da gmpe
 
-
-
-%% ------------------------------------------------------------------------- %%
-\subsection{Cálculo da Curvas de Ameaça} 
-\index{curvas ameaça}
-\label{sec:curvas_de_ameaca}
+Exemplo de modelagem de gmpe
 
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+\subsection{Combinação de Incertezas e Avaliação da Ameaça Sísmica}
+\index{cálculo da ameaça}
+\label{sec:hazard}
+
+
+Integral do Hazard\ldots.
 

@@ -21,9 +21,9 @@
 
 \newglossaryentry{sym:r}
 {
-	name={\ensuremath{r}},
+	name={\ensuremath{\boldsymbol{r}}},
 	description={lugar no espaço},
-	symbol={\ensuremath{r}},
+	symbol={\ensuremath{\boldsymbol{r}}},
 	type=symbols
 }
 
@@ -207,5 +207,333 @@
 }
 
 
+\newglossaryentry{sym:ri}
+{
+	name={\ensuremath{\boldsymbol{r}_i}},
+	description={localização espacial do tremor $i$},
+	symbol={\ensuremath{\boldsymbol{r}_i}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:ti}
+{
+	name={\ensuremath{t_i}},
+	description={localização temporal do tremor $i$},
+	symbol={\ensuremath{t_i}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:hi}
+{
+	name={\ensuremath{h_i}},
+	description={largura de banda temporal do tremor $i$},
+	symbol={\ensuremath{h_i}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:di}
+{
+	name={\ensuremath{d_i}},
+	description={largura de banda espacial do tremor $i$},
+	symbol={\ensuremath{d_i}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:wi}
+{
+	name={\ensuremath{ w_i }},
+	description={peso associado ao tremor $i$},
+	symbol={\ensuremath{ w_i }},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Mc_rt}
+{
+	name={\ensuremath{ M_c\left( \gls{sym:r}, \gls{sym:t} \right)  }},
+	description={magnitude de completude na localização \gls{sym:r}, e no instante \gls{sym:t}},
+	symbol={\ensuremath{ M_c\left( \gls{sym:r}, \gls{sym:t} \right) }},
+	type=symbols
+}
+
+\newglossaryentry{sym:Md}
+{
+	name={\ensuremath{M_d}},
+	description={valor mínimo de magnitude no catálogo},
+	symbol={\ensuremath{M_d}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Rmin}
+{
+	name={\ensuremath{R_{min}}},
+	description={mínima taxa de sismicidade},
+	symbol={\ensuremath{R_{min}}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:R}
+{
+	name={\ensuremath{R(\gls{sym:r},\gls{sym:t})}},
+	description={taxa de sismicidade na localização \gls{sym:r}, e no instante \gls{sym:t}},
+	symbol={\ensuremath{R(\gls{sym:r},\gls{sym:t})}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Rrm}
+{
+	name={\ensuremath{R(\gls{sym:r},\gls{sym:m})}},
+	description={taxa de sismicidade na localização \gls{sym:r}, e no instante \gls{sym:t}},
+	symbol={\ensuremath{R(\gls{sym:r},\gls{sym:t})}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:K1}
+{
+	name={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right) }},
+	description={kernel na dimensão do tempo, onde
+					\gls{sym:ti} é a \glsdesc{sym:ti} e
+					\gls{sym:hi} é a \glsdesc{sym:hi}
+				},
+	symbol={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right)}},
+	type=symbols
+}
+
+\newglossaryentry{sym:K2}
+{
+	name={\ensuremath{K_2 \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right) }},
+	description={kernel na dimensão do espaço, onde
+					\gls{sym:ri} é a \glsdesc{sym:ri} e
+					\gls{sym:di} é a \glsdesc{sym:di}
+	},
+	symbol={\ensuremath{K_2 \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Krm}
+{
+	name={\ensuremath{K(\gls{sym:r},\gls{sym:m})}},
+	description={kernel em uma certa localização \gls{sym:r} para sismos de magnitude \gls{sym:m}},
+	symbol={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right)}},
+	type=symbols
+}
+
+\newglossaryentry{sym:a_cnn}
+{
+	name={\ensuremath{a_{cnn}}},
+	description={acoplamento espaço-temporal},
+	symbol={\ensuremath{a_{cnn}}},
+	type=symbols
+}
+
+\newglossaryentry{sym:k_cnn}
+{
+	name={\ensuremath{k_{cnn}}},
+	description={$k^{th}$ vizinho mais próximo},
+	symbol={\ensuremath{k_{cnn}}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:dk}
+{
+	name={\ensuremath{d_k}},
+	description={$\max{\left\{ d_j \right\}}, j=1.. k_{cnn}$},
+	symbol={\ensuremath{d_k}},
+	type=symbols
+}
+
+\newglossaryentry{sym:hk}
+{
+	name={\ensuremath{h_k}},
+	description={$\max{\left\{ h_j \right\} }, j=1.. k_{cnn}$},
+	symbol={\ensuremath{h_k}},
+	type=symbols
+}
+
+\newglossaryentry{sym:ixiy}
+{
+	name={\ensuremath{\left(i_x, i_y\right)}},
+	description={cada célula do grid},
+	symbol={\ensuremath{\left(i_x, i_y\right)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:N}
+{
+	name={\ensuremath{N}},
+	description={número de tremores no catálogo/catálogo-teste},
+	symbol={\ensuremath{N}},
+	type=symbols
+}
+
+
+
+\newglossaryentry{sym:Np}
+{
+	name={\ensuremath{N_p\left(i_x, i_y\right)}},
+	description={taxa de sismicidade de longo-prazo},
+	symbol={\ensuremath{N_p\left(i_x, i_y\right)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Nu}
+{
+	name={\ensuremath{N_u}},
+	description={\gls{sym:Nt}/\gls{sym:Nc}},
+	symbol={\ensuremath{N_u}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Nc}
+{
+	name={\ensuremath{N_c}},
+	description={número de células da malha de análise},
+	symbol={\ensuremath{N_c}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Npi}
+{
+	name={\ensuremath{N_p(i)}},
+	description={a taxa de sismicidade predita pelo modelo no segmento espacial (\emph{spatial bin}) onde o tremor $i$
+	ocorreu}, symbol={\ensuremath{N_p(i)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:NAi}
+{
+	name={\ensuremath{N_A(i)}},
+	description={taxa de sismicidade em $i$ predita pelo modelo $A$}, 
+	symbol={\ensuremath{N_A(i)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:NBi}
+{
+	name={\ensuremath{N_B(i)}},
+	description={taxa de sismicidade em $i$ predita pelo modelo $B$},
+	symbol={\ensuremath{N_B(i)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:T}
+{
+	name={\ensuremath{T}},
+	description={valor-$T$ com distribuição de Student},
+	symbol={\ensuremath{T}},
+	type=symbols
+}
+
+\newglossaryentry{sym:nxy}
+{
+	name={\ensuremath{n\left(i_x, i_y\right)}},
+	description={número de eventos em \gls{sym:ixiy}},
+	symbol={\ensuremath{n\left(i_x, i_y\right)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Nt}
+{
+	name={\ensuremath{N_t}},
+	description={número de eventos no catálogo-alvo},
+	symbol={\ensuremath{N_t}},
+	type=symbols
+}
+
+
+
+\newglossaryentry{sym:L}
+{
+	name={\ensuremath{L}},
+	description={log da máxima verossimilhança},
+	symbol={\ensuremath{L}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Lu}
+{
+	name={\ensuremath{L_u}},
+	description={máxima verossimilhança de um modelo uniforme},
+	symbol={\ensuremath{L}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:pNn}
+{
+	name={\ensuremath{p(N_p, n)}},
+	description={probabilidade de se observar $n$ eventos com probabilidade \gls{sym:np}},
+	symbol={\ensuremath{p(N_p, n)}},
+	type=symbols
+}
+
+
+\newglossaryentry{sym:G}
+{
+	name={\ensuremath{G}},
+	description={ganho de probabilidade por cada tremor no catálogo-alvo
+				 sobre um modelo espacialmente uniforme de Poisson.}, 
+	symbol={\ensuremath{G}}, 
+	type=symbols
+}
+
+
+\newglossaryentry{sym:I}
+{
+	name={\ensuremath{ I(A,B)}},
+	description={ganho de informação do modelo $A$ sobre o modelo $B$}, 
+	symbol={\ensuremath{I(A,B)}}, 
+	type=symbols
+}
+
+
+\newglossaryentry{sym:aW}
+{
+	name={\ensuremath{a_W}},
+	description={parâmetro fractal tipicamente entre 1.5 e 2 
+				 que gera um decaimento de 3^a e 4^a ordem 
+				 na densidade de probabilidade com a distância epicentral}, 
+	symbol={\ensuremath{a_W}}, 
+	type=symbols
+}
+
+
+
+\newglossaryentry{sym:DW}
+{
+	name={\ensuremath{D_W}},
+	description={dimensão fractal dos epicentros $D_W = 2-\gls{sym:aW}}, 
+	symbol={\ensuremath{D_W}}, 
+	type=symbols
+}
+
+
+
+\newglossaryentry{sym:hm}
+{
+	name={\ensuremath{h(m)}},
+	description={largura de banda fixa para a magnitude $m$}, 
+	symbol={\ensuremath{h(m)}}, 
+	type=symbols
+}
 
 

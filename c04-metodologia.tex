@@ -1,6 +1,6 @@
 %% ------------------------------------------------------------------------- %%
-\chapter{Metodologia}
-\label{cap:metodolodia}
+\chapter{Contexto Teórico}
+\label{cap:teoria}
 
 
 %% ------------------------------------------------------------------------- %%
@@ -61,12 +61,269 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 
 
 
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:Rrm} = \sum_{i=1}^{N} \frac{ K(m, \gls{sym:r} - \gls{sym:ri})}
+											{T({\gls{sym:ri})}}
+	}
+	\label{eq:Rrm}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+\begin{equation}
+	\ensuremath{
+		K(\gls{sym:r}, m) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
+							\left( 1 + \frac{\gls{sym:r}^2}{\gls{sym:hm}^2} \right)^{-\gls{sym:aW}}
+	}
+	\label{eq:/krm1}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+
+\begin{equation}
+	\ensuremath{
+		K(\gls{sym:r}, m) = 
+		\begin{cases}
+			\frac{\gls{sym:DW}}{2\pi \gls{sym:hm}^2} 
+			\left( \frac{\gls{sym:hm}}{\gls{sym:r}} \right)^{2 - \gls{sym:DW}} 
+			  & r \leq \gls{sym:hm} \\
+			0 & r > \gls{sym:hm}
+		\end{cases}
+	}
+	\label{eq:krm2}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:hm} = ce^{dm}
+	}
+	\label{eq:krm2}
+\end{equation}
+onde $c$ e $d$ são determinados por regressão entre a 
+distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de magnitude $m$.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+
+
 %% ------------------------------------------------------------------------- %%
-\subsection{Helmstetter, 2012}\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:acidos_nucleicos}
+\subsection{Helmstetter, 2012}
+\index{hemlstetter, 2012}
+\label{sec:helmstetter}
 
 Texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+\begin{equation}
+	\ensuremath{\gls{sym:R} = \sum_{i=1}^{N}{ \frac{1}{h_i {d_i}^2} \gls{sym:K1}\gls{sym:K2} }}
+	\label{eq:helms01}
+\end{equation}
+onde \gls{sym:R} é \glsdesc{sym:R}, 
+	  $K_1$ é o \glsdesc{sym:K1}, 
+	  $K_2$ é o \glsdesc{sym:K2}.
+
+
 texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+\begin{equation}
+\ensuremath{\gls{sym:R} = \gls{sym:Rmin} + \sum_{t_i < t}{ \frac{2}{h_i {d_i}^2} \gls{sym:K1}\gls{sym:K2} }}
+	\label{eq:helms02}
+\end{equation}
+onde \gls{sym:Rmin} é a \glsdesc{sym:Rmin}.
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+\begin{equation}
+	\ensuremath{ \gls{sym:wi} = 10^{ \gls{sym:b} \left( \gls{sym:Mc_rt} - \gls{sym:Md} \right) } }
+	\label{eq:helms_wi}
+\end{equation}
+onde  \gls{sym:wi} é o \glsdesc{sym:wi}, 
+	  \gls{sym:b} é o \glsdesc{sym:b}, 
+	  \gls{sym:Mc_rt} é a \glsdesc{sym:Mc_rt}, 
+	  \gls{sym:Md} é a \glsdesc{sym:Md}.
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+\begin{equation}
+	\ensuremath{
+		\underset{d_i \ge \gls{sym:dk} \\\ h_i \ge \gls{sym:hk}}{\argmin} 
+		\left[ s\left(h_i,d_i\arrowvert\gls{sym:k_cnn},\gls{sym:a_cnn}\right) 
+		:= h_i + \gls{sym:a_cnn}d_i \right]  
+	}
+	\label{eq:helms_cnn}
+\end{equation}
+onde \gls{sym:k_cnn} é \glsdesc{sym:k_cnn},
+	 \gls{sym:a_cnn} é \glsdesc{sym:a_cnn},
+	 \gls{sym:dk} é \glsdesc{sym:dk} e 
+	 \gls{sym:hk} é \glsdesc{sym:hk}.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:L} = \sum_{i_x=1}^{N_x}\sum_{i_y=1}^{N_y}\log p\left[  \gls{sym:Np}, \gls{sym:nxy}  \right]
+	}
+	\label{eq:loglik}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:pNn} = \frac{{N_p}^n e^{-N_p}}
+							 {n!}
+	}
+	\label{eq:loglik}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:G} = e^{ \frac{\gls{sym:L} - \gls{sym:Lu}}{\gls{sym:Nt}}   }
+	}
+	\label{eq:gain}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:Lu} = -N_t + 
+		\sum_{i_x = 1}^{N_x}\sum_{i_y=1}^{N_y}
+		\gls{sym:nxy}\log N_u - \log \left[ \gls{sym:nxy}! \right]
+	}
+	\label{eq:lu}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+	\begin{align}
+		L - L_u & = \sum_{i_x = 1}^{N_x}\sum_{i_y=1}^{N_y}
+				  \gls{sym:nxy}\log \left[ \frac{\gls{sym:Np}}{\gls{sym:Nu}} \right] \\
+				& = \sum_{i = 1}^{N_t}\log \left[\frac{\gls{sym:Npi}}{\gls{sym:Nu}} \right]
+	\end{align}}
+	\label{eq:llu}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+\begin{equation}
+	\ensuremath{
+	\begin{align}
+		G & = e^{\sum_{i = 1}^{N_t}
+					\frac{\log \left[  \gls{sym:Npi} / \gls{sym:Nu}  \right]}
+						 {\gls{sym:Nt}}
+			  } \\
+		  & = {\langle  \gls{sym:Npi} / \gls{sym:Nu}  \rangle}_{geom}
+	\end{align}}
+	\label{eq:G}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:I} = \frac{1}{\gls{sym:Nt}} 
+					  \sum_{i = 1}^{N_t}\log\left[ \frac{\gls{sym:NAi}}
+					  								  {\gls{sym:NBi}}  \right]
+	}
+	\label{eq:gain}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+
+
+
+\begin{equation}
+	\ensuremath{
+		\sigma^2(x_i) = 	\frac{1}{N_t - 1}
+					{\left(
+					\sum_{i-1}^{N_t}
+						{x_i}^2 
+					\right)}
+					- 
+					\frac{1}{{N_t}^2 - N_t}
+					{\left(
+						\sum_{i=1}^{N_t}{x_i}
+					\right)}^2
+	}
+	\label{eq:var}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
+
+
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:T} = \frac{I\sqrt{N_t}}{\sigma}
+	}
+	\label{eq:T}
+\end{equation}
+onde \ldots.
+
+
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+texto texto texto texto texto texto texto texto texto texto texto texto texto
+
 
