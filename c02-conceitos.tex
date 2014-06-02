@@ -108,19 +108,158 @@ de processos geológicos mensuráveis.
 É fácil notar, portanto, a contribuição dessa disciplina para a análise de sismicidade.
 
 
+
+
+
+
+
+\section{Probabilidade}
+\index{probabilidade}
+\label{sec:probabilidade}
+
+
+
+\subsection{\Glsdesc{pdf}}
+\index{\glsdesc{pdf}}
+\label{sec:pdf}
+
+A \gls{pdf} é uma função contínua de uma \gls{va}  
+que descreve a verossimilhança relativa de que essa \gls{va} 
+assuma, entre todas as realizações possíveis, uma em especial.
+
+Considerando, por exemplo, que $f_X(x)$ seja uma \gls{pdf} para a \gls{va} $X$, 
+sabe-se que $X$ ocorre como $x$ com probabilidade igual a
+\begin{equation}
+	P \left\{ X = x\right\} = f_X(x).
+	\label{eq:pdf}
+\end{equation}
+
+Mas para que uma função possa assumir o papel de \gls{pdf} é necessário que ela
+possua algumas propriedades:
+\begin{enumerate}[(i)]
+	\item $f_X(x) \ge 0\;\forall x$  (a função $f_X$ deve ser sempre positiva)
+	\item $\int_{-\infty}^{+\infty} f_X(x) \mathrm{d}x = 1$ (e deve somar, sobre todos os valores possíveis, a unidade)
+\end{enumerate}
+
+De forma análoga, a probabilidade de que uma realização de $X$ 
+seja dentro de um intervalo de valores conhecidos $[x_0, x_1]$ é dada por
+\begin{equation}
+	P \left\{ X \in [x_0,x_1[\, \right\} = \int_{x_0}^{x_1}\!f_X(x)\,\mathrm{d}x.
+	\label{eq:pdf2}
+\end{equation}
+
+
+\subsection{\Glsdesc{pmf}}
+\index{\glsdesc{pmf}}
+\label{sec:pmf}
+
+Outro conceito importante de probabilidade e diretamente relacionado à \gls{pdf} é a
+\gls{pmf} ou função de distribuição \textbf{cumulativa} de probabilidade.
+
+No caso da \gls{va} $X$, sua \gls{pmf} $F_X(x)$ seria definida como
+
+\begin{equation}
+	P \left\{ X \leq x\right\} = F_X(x) = \int_{-\infty}^{x}\!f_X(u)\,\mathrm{d}u.
+	\label{eq:pmf}
+\end{equation}
+
+
+
+\subsection{Histograma}
+\index{histograma}
+\label{sec:histogram}
+
+Quando a \gls{pdf} de uma \gls{va} não é conhecida e se deseja estudar seu comportamento
+é preciso estimá-la e o histograma é uma das técnicas mais antigas e utilizadas para tal.
+
+O histograma divide o universo das observações, possíveis realizações $X_1, X_2,\cdots, X_n$
+da \gls{va} em compartimentos (\emph{bins}).
+
+Dados uma origem arbitrária $x_0$ e uma largura $h$ de cada um, os compartimentos
+são definidos como os intervalos $[x_0 + (j -1)h,\; x_0 + jh[$ 
+com $j\in\mathbb{Z}$, um identificador para cada um deles. 
+
+Considere um determinado intervalo $[-h/2, h/2[$. 
+A probabilidade de que uma observação qualquer venha a pertencer à esse intervalo é
+
+\begin{equation}
+	P \left\{ X \in [-h/2,h/2[ \; \right\} = \int_{-h/2}^{h/2}\!f_X(x)\,\mathrm{d}x.
+	\label{eq:hist01}
+\end{equation}
+
+E um estimador natural $\hat{f}_X$ para a densidade $f_X$ seria contar o número de observações.
+
+\begin{equation}
+	P \left\{ X \in [-h/2,h/2[ \; \right\} \approx \frac{\# \left\{ X_i \in [-h/2,h/2[ \; \right\}}{n} =
+	\int_{-h/2}^{h/2}\!\hat{f}_X(x)\,\mathrm{d}x ,
+	\label{eq:hist02}
+\end{equation}
+de onde 
+\begin{equation}
+	\hat{f}_X(x) = \frac{\# \left\{ X_i \in [-h/2,h/2[ \; \right\}}{nh}
+	\label{eq:hist_03}
+\end{equation}
+para todo $x \in [-h/2,h/2[$.
+
+De modo geral, sejam $X_1, \cdots, X_n$ observações \gls{iid} da \gls{va} $X$ com densidade desconhecida $f$. 
+Considere $N_I$ intervalos de comprimento $h$ e o conjunto de compartimentos $C_j = [x_0 + (j -1)h,\; x_0 + jh[,\;
+j=1..N_I$.
+Defina
+\[
+	I(x \in A) := \begin{cases}
+		1 & \text{se } x \in A \\
+		0 & \text{caso contrário}
+	\end{cases}
+\] 
+e 
+\[	n_j := \sum_{i=1}^{n}I(X_i \in C_j)\; \text{tal que} \;  \sum_{j=1}^{N_I}n_j = n. \]
+
+Dessa forma a estimativa $\hat{f}$ parametrizada pela largura $h$ para a densidade $f$ seria
+\begin{equation}
+	\hat{f}(x \arrowvert\, h) = \frac{1}{nh} \sum_{j=1}^{N_I}n_jI(x \in C_j)
+	\label{eq:hist_04}
+\end{equation}
+para toda realização possível $x$ de $X$.
+
+
+
+
+
+\subsection{Processo de Poisson}
+\index{processo de Poisson}
+\label{sec:processo_de_Poisson}
+
+Definição do processo\ldots
+
+Críticas\ldots
+
+
+ 
+
+
 \section{Sismicidade}
 \index{sismicidade}
 \label{sec:sismicidade}
 
-A sismicidade é o estudo da ocorrência de dos tremores. Quando, onde, como, de que tamanho?!
+A sismicidade é a ocorrência dos tremores. Quando, onde, como, de que tamanho?!
 
-É sabido que sismos menores são muito mais frequentes que os grandes tremores de terra
-catastróficos.
+É sabido que pequenos abalos são mais frequentes que os tremores de terra
+muito grandes e catastróficos cujos registros são extremamente raros.
+
+A figura \ref{f:m9} apresenta os sismos de magnitude acima de nove conhecidos.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.50\textwidth]{M9}
+   \caption[Sismos com magnitude acima de 9,0.]
+   		   {Sismos com magnitude acima de 9,0.} 
+   \label{f:m9}
+\end{figure} 
+
 
 Tremores de terra, abalos, \glspl{equake}, sismos são a ocorrência de
 fenômenos geológicos de ruptura, instantânea, por certo mecanismo, de certa dimensão, na
 crosta terrestre.
-
 
 \subsection{Ocorrência}
 \index{\gls{equake}!ocorrência}
@@ -143,15 +282,6 @@ O local em que se iniciou a ruptura que deu origem ao tremor é um \gls{hypocent
 enquanto sua projeção na superfície, desconsiderando-se a profundidade, é o \gls{epicenter}.
 
 
-\subsubsection{Processo de Poisson}
-\index{processo de Poisson}
-\label{sec:processo_de_Poisson}
-
-Definição do processo\ldots
-
-Críticas\ldots
-
- 
 \subsection{Magnitude (da ruptura)}
 \index{magnitude}
 \label{sec:magnitude}

@@ -18,6 +18,38 @@
 	type=symbols
 }
 
+\newglossaryentry{sym:E}
+{
+	name={\ensuremath{E}},
+	description={valor esperado},
+	symbol={\ensuremath{E}},
+	type=symbols
+}
+
+\newglossaryentry{sym:Var}
+{
+	name={\ensuremath{Var}},
+	description={variança},
+	symbol={\ensuremath{Var}},
+	type=symbols
+}
+
+\newglossaryentry{sym:epsilon}
+{
+	name={\ensuremath{\epsilon}},
+	description={erro},
+	symbol={\ensuremath{\epsilon}},
+	type=symbols
+}
+
+\newglossaryentry{sym:sigma}
+{
+	name={\ensuremath{\sigma}},
+	description={desvio padrão},
+	symbol={\ensuremath{\sigma}},
+	type=symbols
+}
+
 
 \newglossaryentry{sym:r}
 {
@@ -40,7 +72,7 @@
 \newglossaryentry{sym:lambda}
 {
 	name={\ensuremath{\lambda}},
-	description={taxa de ocorrência},
+	description={função regressora para a taxa de sismicidade},
 	symbol={\ensuremath{\lambda}},
 	type=symbols
 }
@@ -52,7 +84,6 @@
 	symbol={km},
 	type=symbols
 }
-
 
 \newglossaryentry{sym:M_0}
 {
@@ -281,7 +312,7 @@
 \newglossaryentry{sym:R}
 {
 	name={\ensuremath{R(\gls{sym:r},\gls{sym:t})}},
-	description={taxa de sismicidade na localização \gls{sym:r}, e no instante \gls{sym:t}},
+	description={taxa de sismicidade na localização \gls{sym:r} e no instante \gls{sym:t}},
 	symbol={\ensuremath{R(\gls{sym:r},\gls{sym:t})}},
 	type=symbols
 }
@@ -290,7 +321,7 @@
 \newglossaryentry{sym:Rrm}
 {
 	name={\ensuremath{R(\gls{sym:r},\gls{sym:m})}},
-	description={taxa de sismicidade na localização \gls{sym:r}, e no instante \gls{sym:t}},
+	description={taxa de sismicidade na localização \gls{sym:r} e no instante \gls{sym:t}},
 	symbol={\ensuremath{R(\gls{sym:r},\gls{sym:t})}},
 	type=symbols
 }
@@ -299,7 +330,7 @@
 \newglossaryentry{sym:K1}
 {
 	name={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right) }},
-	description={kernel na dimensão do tempo, onde
+	description={função de núcleo na dimensão do tempo, onde
 					\gls{sym:ti} é a \glsdesc{sym:ti} e
 					\gls{sym:hi} é a \glsdesc{sym:hi}
 				},
@@ -310,7 +341,7 @@
 \newglossaryentry{sym:K2}
 {
 	name={\ensuremath{K_2 \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right) }},
-	description={kernel na dimensão do espaço, onde
+	description={função de núcleo na dimensão do espaço, onde
 					\gls{sym:ri} é a \glsdesc{sym:ri} e
 					\gls{sym:di} é a \glsdesc{sym:di}
 	},
@@ -322,7 +353,7 @@
 \newglossaryentry{sym:Krm}
 {
 	name={\ensuremath{K(\gls{sym:r},\gls{sym:m})}},
-	description={kernel em uma certa localização \gls{sym:r} para sismos de magnitude \gls{sym:m}},
+	description={função de núcleo em uma certa localização \gls{sym:r} para sismos de magnitude \gls{sym:m}},
 	symbol={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right)}},
 	type=symbols
 }
@@ -338,7 +369,7 @@
 \newglossaryentry{sym:k_cnn}
 {
 	name={\ensuremath{k_{cnn}}},
-	description={$k^{th}$ vizinho mais próximo},
+	description={$k^{ésimo}$ vizinho mais próximo},
 	symbol={\ensuremath{k_{cnn}}},
 	type=symbols
 }
@@ -510,7 +541,7 @@
 {
 	name={\ensuremath{a_W}},
 	description={parâmetro fractal tipicamente entre 1.5 e 2 
-				 que gera um decaimento de 3^a e 4^a ordem 
+				 que gera um decaimento de $3^{a}$ a $4^{a}$ ordem 
 				 na densidade de probabilidade com a distância epicentral}, 
 	symbol={\ensuremath{a_W}}, 
 	type=symbols
@@ -535,5 +566,46 @@
 	symbol={\ensuremath{h(m)}}, 
 	type=symbols
 }
+
+
+
+\newglossaryentry{sym:a0}
+{
+	name={\ensuremath{a_0}},
+	description={parâmetro de \gls{sym:hm}}, 
+	symbol={\ensuremath{a_0}}, 
+	type=symbols
+}
+
+
+
+\newglossaryentry{sym:a1}
+{
+	name={\ensuremath{a_1}},
+	description={parâmetro de \gls{sym:hm}}, 
+	symbol={\ensuremath{a_1}}, 
+	type=symbols
+}
+
+
+
+
+\newglossaryentry{sym:dF}
+{
+	name={\ensuremath{d_F}},
+	description={distância de correlação}, 
+	symbol={\ensuremath{d_F}}, 
+	type=symbols
+}
+
+
+\newglossaryentry{sym:dij}
+{
+	name={\ensuremath{d_{ij}}},
+	description={distância entre a célula $i$ e a célula $j$ na malha}, 
+	symbol={\ensuremath{d_{ij}}}, 
+	type=symbols
+}
+
 
 

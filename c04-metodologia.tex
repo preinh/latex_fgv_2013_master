@@ -8,125 +8,265 @@
 %\index{área do trabalho!fundamentos}
 \label{sec:c04_apresentacao}
 
+Este capítulo apresenta a formalização das teorias aplicadas na fase de
+processamento. 
 
-Neste capítulo apresenta-se a formalização das metodologias aplicadas na fase 
-processamento \ref{cap:processamento}. Essencialmente das \gls{smoothing} empregadas.
+Trata-se essencialmente das \gls{smoothing} que, em geral, permitem extrair 
+feições importantes do conjunto de dados.
+
+Quando aplicadas à caracterização das \glspl{seismic_source} em \gls{psha}
+tornam possível gerar um conjunto regular de \glspl{point_source} 
+singularmente definidas pela suavização das \glspl{seismic_rate} 
+nas células de uma malha regular.
+
 
 %% ------------------------------------------------------------------------- %%
 \section{\Gls{smoothing}}
 \index{suavização!fundamentos, metodologia}
 \label{sec:04_smoothing_general}
 
-As \gls{smoothing} em geral, permitem extrair feições importantes do conjunto de dados.
+A idéia, no fundo, é estimar a distribuição espacial da taxa anual de sismicidade $R$
+ou sua \gls{pdf}.
+O método mais simples conhecido para essa estimativa seria o histograma.
 
-Quando aplicadas à caracterização das \glspl{seismic_source} em \gls{psha},
-permitem gerar um conjunto de \glspl{point_source} 
-caracterizadas pela determinação suavizada das \glspl{seismic_rate} 
-nos pontos de uma malha regular. 
+\subsection{Histograma 2D: uma possível \gls{pdf} para a  taxa de sismicidade}
 
-Na prática, a essencia da técnica é aplicar uma \gls{kernel_function} como na equação \ref{eq:kernel}
-
+Numa malha regular a taxa anual de sismicidade em cada célula seria calculada 
+contando, à partir de um catálogo com tempo de observação conhecido,
 \begin{equation}
-K(x)
-\label{eq:kernel}
+\scriptsize
+	\ensuremath{
+	\frac{\text{o número observado de sismos na célula}}
+		 {\text{área/volume da célula} \times 
+		  \text{número total de sismos observados}}
+	/
+	\text{tempo de observação em anos}
+	}
+\normalsize.
+\label{eq:rate_count}
 \end{equation}
 
+Isso seria equivalente a preparar um histograma normalizado 
+dos tremores em duas (ou três, considerando a profundidade) dimensões.
 
-Texto \ref{eq:kernel} texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+O que se busca, em geral, pelas técnicas de suavização é justamente suavizar essas contagens ou esse histograma
+normalizado que representa uma estimativa da função de densidade de probabilidade da taxa de ocorrência espacial de tremores. 
 
-bla bla \eqref{eq:emc} \ldots
+%\newtheorem{prop}{Proposição}
+%\begin{prop}
 
-
-%% ------------------------------------------------------------------------- %%
-\subsection{Frankel, 1995}\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:acidos_nucleicos}
-
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+\subsection{Regressão e Suavizadores}
 
 
+Para os $n$ pares (célula, taxa de sismicidade) $(x_1, R_1), (x_2, R_2), \cdots, (x_n, R_n)$
+obtidos pela contagem anterior, considere um modelo para a taxa de sismicidade $R$ 
+em uma determinada célula $x_i$ a partir dessa amostra dado por
+\begin{equation}
+	\ensuremath{
+		R(x_i) = \lambda(x_i) + \epsilon(x_i),\;\;\; i=1..n
+	}
+\label{eq:rate_model}
+\end{equation}
 
-%% ------------------------------------------------------------------------- %%
-\subsection{Woo, 1996}\index{ácido!nucléico}\index{nucleotídeos}
-\label{sec:acidos_nucleicos}
+onde os $\epsilon_i$ são \gls{va} não-correlacionadas que representam os erros 
+tais que $E(\epsilon_i \arrowvert X = x_i) = 0$ 
+e a  $Var(\epsilon_i \arrowvert X = x_i) = \sigma^2(x_i)$. A função  
+$\lambda(x_i) = E(R_i \arrowvert X = x_i)$ é uma função de regressão.
+%\end{prop}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
+É possível definir um estimador ou suavizador linear $\hat{\lambda}$ para $\lambda$, 
+se para todo $x \in \mathbb{R}$ existe uma sequência de pesos $w_1(x), w_2(x),\cdots,w_n(x)$ tais que
+$\sum_{i=1}^{n}w_i(x) = 1$, como sendo
 
 \begin{equation}
 	\ensuremath{
-		\gls{sym:Rrm} = \sum_{i=1}^{N} \frac{ K(m, \gls{sym:r} - \gls{sym:ri})}
-											{T({\gls{sym:ri})}}
+		\hat{\lambda}(x) = \sum_{i=1}^{n}w(x_i)\,R_i.
+	}
+\label{eq:rate_estim}
+\end{equation}
+
+A questão passa a ser então como encontrar essa sequência de pesos $w_i$.
+
+\subsection{Função de Núcleo e Estimadores de Naradaya-Watson}
+
+Uma função de núcleo $K$ (\emph{Kernel}) é qualquer função par, contínua e limitada que satisfaz as seguintes
+propriedades:
+
+%\begin{enumerate}[(i)]
+%	\item $\int \lvert K(\boldsymbol{u})\rvert \,\mathrm{d}\boldsymbol{u} < \infty $
+%	\item $\underset{ \lvert\boldsymbol{u} \rvert \to \infty }{\lim} \lvert \boldsymbol{u} K(\boldsymbol{u})\rvert = 0$
+%	\item $\int \! K(\boldsymbol{u}) \,\mathrm{d}\boldsymbol{u} = 1 $
+%\end{enumerate}
+\begin{center}
+(i) $\int \lvert K(\boldsymbol{r})\rvert \,\mathrm{d}\boldsymbol{r} < \infty $
+\;\;\;\;\;(ii) $\underset{ \lvert\boldsymbol{r} \rvert \to \infty }{\lim} 
+				\lvert \boldsymbol{r} \, K(\boldsymbol{r})\rvert =0$ 
+\;\;\;\;\;(iii) $\int \! K(\boldsymbol{r})	\,\mathrm{d}\boldsymbol{r} = 1 $.
+\end{center}
+
+Uma das possíveis maneiras de se encontrar os pesos $w_i$ é o 
+Estimador de Naradaya-Watson (REFERENCIA). 
+
+Seja $h \in \mathbb{R}, h > 0$ e $K$ uma função de núcleo. 
+Naradaya e Watson propõem, para a estimativa \ref{eq:rate_estim}, os pesos
+\begin{equation}
+	\ensuremath{
+		w_i(x) = \frac{ K\left( \frac{x - x_i}{h} \right)}
+					  {\sum_{j=1}^{n} K\left( \frac{x - x_j}{h} \right) },
+	}
+\label{eq:rate_wi}
+\end{equation}
+onde $h$ é conhecida como largura de banda ou \emph{bandwidth}.
+
+
+
+\subsection{Formas das funções de núcleo}
+
+Dentre as possíveis expressões para as funções de núcleo é relevante destacar nesse texto duas. 
+
+A equação \ref{eq:kernel_gs} apresenta a expressão da função de núcleo gaussiana:
+
+\begin{equation}
+	\ensuremath{
+		K_{gs}(\gls{sym:r}\arrowvert h) = \dot{\eta}(h)
+			e^{- \frac{\|\gls{sym:r}\|^2}
+ 				 	  {2 h^2 }},
+ 	}
+\label{eq:kernel_gs}
+\end{equation}
+onde $h$ é a largura de banda definida para a função de núcleo e $\dot{\eta}(h)$ um fator de normalização
+para que sua integral seja igual à unidade.
+
+
+Outra forma possível para a função de núcleo é uma Lei de Potência (\emph{power-law}), que decai com o 
+inverso do quadrado da distância, como na equação
+\ref{eq:kernel_pl} a seguir:
+
+\begin{equation}
+	\ensuremath{
+		K_{pl}(\gls{sym:r}\arrowvert h) = 
+			\frac{\ddot{\eta}(h)}
+ 				 {\left( \|\gls{sym:r}\|^2 + h^2 \right)^{\frac{3}{2}} },
+ 	}
+\label{eq:kernel_pl}
+\end{equation}
+onde $h$ é a largura de banda definida para a função de núcleo e $\ddot{\eta}(h)$ um fator de normalização
+para que sua integral também seja igual à unidade.
+
+
+Quaisquer dessas duas funções podem ser usadas como função de núcleo 
+para os estimadores de Naradaya-Watson apresentados anteriormente.
+
+\subsection{Contribuição de uma função de núcleo bidimensional}
+
+É importante notar que há uma outra abordagem possível para a estimativa da taxa de sismicidade.
+
+Se, em vez de suavizar o histograma do catálogo sísmico numa malha regular, a proposta for
+avaliar a contribuição em probabilidade pela \gls{pdf} de cada tremor em uma determinada célula da malha, 
+é possível considerar uma função de núcleo como a \gls{pdf} da ocorrência de cada tremor, e,
+essa contribuição numa célula $j$, devido ao tremor $i$ em $\boldsymbol{r}_i$, dada pela integral da
+função de núcleo na área/volume da célula: 
+\begin{equation}
+	\ensuremath{
+		R_{j}(\boldsymbol{r}_i \arrowvert h) = \int\limits_{\mathrm{cell}\;j}\!K( \gls{sym:r} -
+		\gls{sym:ri}\,\arrowvert\,h)\,\mathrm{d}\gls{sym:r} },
+\label{eq:kernel_int}
+\end{equation}
+onde $h$ é a largura de banda da suavização.
+
+
+Em todos os casos apresentados, é fácil notar que, a determinação da largura de banda influencia diretamente
+a estimativa da taxa de sismicidade. Os métodos estudados aqui variam essencialmente 
+na forma com que a escolha da largura de banda é concebida e proposta.
+
+
+
+%% ------------------------------------------------------------------------- %%
+\section{Frankel, 1995}
+\index{Frankel, 1995}
+\label{sec:frankel}
+
+A proposta de Arthur Frankel (REFERENCIA) foi usar uma largura de banda fixa, 
+nomeada distância de correlação $d_F$, e aplicar o estimador de Naradaya-Watson (REFERENCIA)
+para suavizar o histograma 2D da sismicidade utilizando uma função de núcleo gaussiana:
+\begin{equation}
+	\ensuremath{
+		\tilde{n}_j = \frac{ \sum_{i} n_i \,e^{ - \left(\frac{\gls{sym:dij}}{\gls{sym:dF}}\right)^2}}
+						   { \sum_{i}     e^{ - \left(\frac{\gls{sym:dij}}{\gls{sym:dF}}\right)^2}},
+	}
+	\label{eq:ni}
+\end{equation}
+onde $\tilde{n}_j$ é a taxa de sismicidade (número de sismos com magnitude $m$ maior que a mínima magnitude
+\gls{sym:Md} do catálogo) suavizada
+na célula $j$, $n_i$ é o número de sismos em cada outra célula $i$ e
+	\gls{sym:dij} é \glsdesc{sym:dij}.
+
+
+Zechar \& Jordan (REFERENCIA) propuseram uma variação da abordagem de Frankel avaliando a contribuição
+de cada tremor $i$ na célula $j$ em vez de suavizar o histograma 2D, mas para isso
+é preciso avaliar essa contribuição como na equação \ref{eq:kernel_int}.
+
+
+%% ------------------------------------------------------------------------- %%
+\section{Woo, 1996}
+\index{Woo, 1996}
+\label{sec:woo}
+
+Já Gordon Woo (REFEERENCIA) propôs avaliar a contribuição de uma função de núcleo 
+de cada sismo $i$ ocorrido em $\boldsymbol{r}_i$ 
+na célula centrada em $\boldsymbol{r}$ que dependa também de sua
+magnitude $m$:
+\begin{equation}
+	\ensuremath{
+		\gls{sym:Rrm} = \sum_{i=1}^{N} \frac{ K(\gls{sym:r} - \gls{sym:ri}, m)}
+											{T({\gls{sym:ri})}},
 	}
 	\label{eq:Rrm}
 \end{equation}
-onde \ldots.
+onde $N$ é o número de tremores $i$ no catálogo 
+e $T(\gls{sym:ri})$ é o período em que todo sismo de magnitude acima de $m$ é completamente observado 
+em \gls{sym:ri}.
 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
+A função de núcleo utilizada por Woo foi a proposta por Vere-Jones em 1992 (REFERENCIA) 
+para um domínio espacial infinito:
 \begin{equation}
 	\ensuremath{
-		K(\gls{sym:r}, m) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
-							\left( 1 + \frac{\gls{sym:r}^2}{\gls{sym:hm}^2} \right)^{-\gls{sym:aW}}
+		K_{vj}(\gls{sym:r}, m \arrowvert \gls{sym:aW}) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
+							\left( 1 + \frac{\gls{sym:r}^2}{\gls{sym:hm}^2} \right)^{-\gls{sym:aW}},
 	}
-	\label{eq:/krm1}
+	\label{eq:krm1}
 \end{equation}
-onde \ldots.
+onde \gls{sym:aW} é \glsdesc{sym:aW}.
 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-\begin{equation}
+Na ordem prática, o tempo computacional deve ser reduzido e é prudente utilizar uma
+variante limitada para a função de núcleo proposta por Vere-Jones:\begin{equation}
 	\ensuremath{
-		K(\gls{sym:r}, m) = 
+		K_{vj}(\gls{sym:r}, m \arrowvert \gls{sym:DW}) = 
 		\begin{cases}
 			\frac{\gls{sym:DW}}{2\pi \gls{sym:hm}^2} 
 			\left( \frac{\gls{sym:hm}}{\gls{sym:r}} \right)^{2 - \gls{sym:DW}} 
-			  & r \leq \gls{sym:hm} \\
-			0 & r > \gls{sym:hm}
-		\end{cases}
+			  & \gls{sym:r} \leq \gls{sym:hm} \\
+			0 & \gls{sym:r} > \gls{sym:hm}
+		\end{cases},
 	}
 	\label{eq:krm2}
 \end{equation}
-onde \ldots.
+onde \gls{sym:DW} é \glsdesc{sym:DW}.
 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
+Para a largura de banda \gls{sym:hm}, nos dois casos, Gordon Woo propôs utilizar a relação
 \begin{equation}
 	\ensuremath{
-		\gls{sym:hm} = ce^{dm}
+		h(m\arrowvert \gls{sym:a0}, \gls{sym:a1}) = \gls{sym:a0}e^{\gls{sym:a1}m},
 	}
 	\label{eq:krm2}
 \end{equation}
-onde $c$ e $d$ são determinados por regressão entre a 
-distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de magnitude $m$.
-
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
+em que $a_0$ e $a_1$ são determinados pela regressão entre a 
+distância média de cada tremor ao vizinho mais próximo $h$ em cada faixa de magnitude $m \pm \mathrm{d}m$.
+É uma largura de banda dependente da magnitude.
 
 
 %% ------------------------------------------------------------------------- %%
-\subsection{Helmstetter, 2012}
+\section{Helmstetter, 2012}
 \index{hemlstetter, 2012}
 \label{sec:helmstetter}
 
@@ -168,16 +308,23 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 
 \begin{equation}
 	\ensuremath{
-		\underset{d_i \ge \gls{sym:dk} \\\ h_i \ge \gls{sym:hk}}{\argmin} 
-		\left[ s\left(h_i,d_i\arrowvert\gls{sym:k_cnn},\gls{sym:a_cnn}\right) 
-		:= h_i + \gls{sym:a_cnn}d_i \right]  
+%		h_i, d_i = \underset{d_i \ge \gls{sym:dk}, h_i \ge \gls{sym:hk}}{\argmin} 
+		h_i, d_i = \argmin_{\substack{h_i \ge \gls{sym:hk} \\
+						              d_i \ge \gls{sym:dk}}
+				           } 
+		\left[ s \left(h_i,d_i 
+			 		  \arrowvert
+					  \gls{sym:k_cnn},\gls{sym:a_cnn}
+			     \right) 
+			   := h_i + \gls{sym:a_cnn}d_i 
+	    \right]  
 	}
 	\label{eq:helms_cnn}
 \end{equation}
-onde \gls{sym:k_cnn} é \glsdesc{sym:k_cnn},
-	 \gls{sym:a_cnn} é \glsdesc{sym:a_cnn},
-	 \gls{sym:dk} é \glsdesc{sym:dk} e 
-	 \gls{sym:hk} é \glsdesc{sym:hk}.
+onde \gls{sym:k_cnn} é o \glsdesc{sym:k_cnn},
+	 \gls{sym:a_cnn} é o \glsdesc{sym:a_cnn},
+	 \gls{sym:dk} é o \glsdesc{sym:dk} e 
+	 \gls{sym:hk} é o \glsdesc{sym:hk}.
 
 
 texto texto texto texto texto texto texto texto texto texto texto texto texto
