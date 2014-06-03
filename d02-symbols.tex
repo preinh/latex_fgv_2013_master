@@ -259,7 +259,7 @@
 \newglossaryentry{sym:hi}
 {
 	name={\ensuremath{h_i}},
-	description={largura de banda temporal do tremor $i$},
+	description={largura de banda temporal para o tremor $i$},
 	symbol={\ensuremath{h_i}},
 	type=symbols
 }
@@ -268,7 +268,7 @@
 \newglossaryentry{sym:di}
 {
 	name={\ensuremath{d_i}},
-	description={largura de banda espacial do tremor $i$},
+	description={largura de banda espacial para o tremor $i$},
 	symbol={\ensuremath{d_i}},
 	type=symbols
 }
@@ -276,9 +276,9 @@
 
 \newglossaryentry{sym:wi}
 {
-	name={\ensuremath{ w_i }},
-	description={peso associado ao tremor $i$},
-	symbol={\ensuremath{ w_i }},
+	name={\ensuremath{ w }},
+	description={peso},
+	symbol={\ensuremath{ w }},
 	type=symbols
 }
 
@@ -286,7 +286,7 @@
 \newglossaryentry{sym:Mc_rt}
 {
 	name={\ensuremath{ M_c\left( \gls{sym:r}, \gls{sym:t} \right)  }},
-	description={magnitude de completude na localização \gls{sym:r}, e no instante \gls{sym:t}},
+	description={magnitude de completude na localização \gls{sym:r} e no instante \gls{sym:t}},
 	symbol={\ensuremath{ M_c\left( \gls{sym:r}, \gls{sym:t} \right) }},
 	type=symbols
 }
@@ -327,25 +327,25 @@
 }
 
 
-\newglossaryentry{sym:K1}
+\newglossaryentry{sym:Kt}
 {
-	name={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right) }},
+	name={\ensuremath{K_t \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right) }},
 	description={função de núcleo na dimensão do tempo, onde
 					\gls{sym:ti} é a \glsdesc{sym:ti} e
 					\gls{sym:hi} é a \glsdesc{sym:hi}
 				},
-	symbol={\ensuremath{K_1 \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right)}},
+	symbol={\ensuremath{K_t \left( \frac{ t - \gls{sym:ti} }{ \gls{sym:hi} } \right)}},
 	type=symbols
 }
 
-\newglossaryentry{sym:K2}
+\newglossaryentry{sym:Kr}
 {
-	name={\ensuremath{K_2 \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right) }},
+	name={\ensuremath{K_r \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right) }},
 	description={função de núcleo na dimensão do espaço, onde
 					\gls{sym:ri} é a \glsdesc{sym:ri} e
 					\gls{sym:di} é a \glsdesc{sym:di}
 	},
-	symbol={\ensuremath{K_2 \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right)}},
+	symbol={\ensuremath{K_r \left( \frac{ \| \gls{sym:r} - \gls{sym:ri} \| }{d_i} \right)}},
 	type=symbols
 }
 
@@ -369,7 +369,7 @@
 \newglossaryentry{sym:k_cnn}
 {
 	name={\ensuremath{k_{cnn}}},
-	description={$k^{ésimo}$ vizinho mais próximo},
+	description={$k^{\'esimo}$ vizinho mais próximo},
 	symbol={\ensuremath{k_{cnn}}},
 	type=symbols
 }
@@ -413,7 +413,7 @@
 \newglossaryentry{sym:Np}
 {
 	name={\ensuremath{N_p\left(i_x, i_y\right)}},
-	description={taxa de sismicidade de longo-prazo},
+	description={taxa de sismicidade prevista pelo modelo para a célula \gls{sym:ixiy}},
 	symbol={\ensuremath{N_p\left(i_x, i_y\right)}},
 	type=symbols
 }
@@ -464,18 +464,18 @@
 }
 
 
-\newglossaryentry{sym:T}
+\newglossaryentry{sym:Ts}
 {
-	name={\ensuremath{T}},
+	name={\ensuremath{T_s}},
 	description={valor-$T$ com distribuição de Student},
-	symbol={\ensuremath{T}},
+	symbol={\ensuremath{T_s}},
 	type=symbols
 }
 
 \newglossaryentry{sym:nxy}
 {
 	name={\ensuremath{n\left(i_x, i_y\right)}},
-	description={número de eventos em \gls{sym:ixiy}},
+	description={número de eventos observados na célula \gls{sym:ixiy}},
 	symbol={\ensuremath{n\left(i_x, i_y\right)}},
 	type=symbols
 }

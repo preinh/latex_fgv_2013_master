@@ -29,7 +29,7 @@ A idéia, no fundo, é estimar a distribuição espacial da taxa anual de sismic
 ou sua \gls{pdf}.
 O método mais simples conhecido para essa estimativa seria o histograma.
 
-\subsection{Histograma 2D: uma possível \gls{pdf} para a  taxa de sismicidade}
+\subsection{Histograma 2D: uma possível \glsdesc{pdf} para a taxa de sismicidade}
 
 Numa malha regular a taxa anual de sismicidade em cada célula seria calculada 
 contando, à partir de um catálogo com tempo de observação conhecido,
@@ -270,41 +270,69 @@ distância média de cada tremor ao vizinho mais próximo $h$ em cada faixa de m
 \index{hemlstetter, 2012}
 \label{sec:helmstetter}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+O trabalho de  Agnès Helmstetter e Maximilian Werner (REFERENCIA) é focado principalmente em 
+projeção de longo-prazo para ocorrência de tremores/rupturas. 
+O principal pressuposto dessa técnica (seção \ref{sec:projecao}) é que nesse período a taxa
+de sismicidade se mantenha invariante.
 
+\subsection{Taxa de sismicidade}
+Para eles a taxa de sismicidade em uma localização
+$\boldsymbol{r}$ e em um instante $t$ 
+em função dos tempos e localizações dos tremores $i$ em um catálogo 
+poderia ser expresso por
 \begin{equation}
-	\ensuremath{\gls{sym:R} = \sum_{i=1}^{N}{ \frac{1}{h_i {d_i}^2} \gls{sym:K1}\gls{sym:K2} }}
+	\ensuremath{\gls{sym:R} = \sum_{i=1}^{N}{ \frac{1}{h_i\,{d_i}^2} \gls{sym:Kt}\gls{sym:Kr} }},
 	\label{eq:helms01}
 \end{equation}
 onde \gls{sym:R} é \glsdesc{sym:R}, 
-	  $K_1$ é o \glsdesc{sym:K1}, 
-	  $K_2$ é o \glsdesc{sym:K2}.
+	  $K_t$ é a \glsdesc{sym:Kt}, 
+	  $K_r$ é a \glsdesc{sym:Kr}.
 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
+Como seu interesse é em projeção, restringiram os tempos do catálogo aos $t_i
+< t$ e ponderaram segundo um peso $w$ da seguinte maneira:
 \begin{equation}
-\ensuremath{\gls{sym:R} = \gls{sym:Rmin} + \sum_{t_i < t}{ \frac{2}{h_i {d_i}^2} \gls{sym:K1}\gls{sym:K2} }}
+\ensuremath{\gls{sym:R} = \gls{sym:Rmin} + \sum_{t_i < t}{ 
+	\frac{2\,w(\boldsymbol{r}_i,t_i)}{h_i\,{d_i}^2}
+			\gls{sym:Kt}\gls{sym:Kr} }},
 	\label{eq:helms02}
 \end{equation}
-onde \gls{sym:Rmin} é a \glsdesc{sym:Rmin}.
+onde \gls{sym:Rmin} é a \glsdesc{sym:Rmin}, positiva, permitindo que ocorram eventos-surpresa 
+onde não se tem registro de sismicidade.
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
+Os pesos $w(\boldsymbol{r}_i,t_i)$, calculados em cada tremor $i$, propostos por Helmstetter são a transformação de
+Gutemberg-Richter. Consideraram uma contribuição maior para a taxa de sismicidade daqueles sismos 
+que ocorreram onde e quando a magnitude de completude $M_c$ era maior que 
+a mínima magnitude $M_d$ do catálogo 
+em locais onde a magnitude do completude e o valor-b variam. 
+Note que o modelo de pesos acomoda bem variações espaciais e
+temporais tanto da magnitude de completude como do valor-b. A expressão é a seguinte:
 \begin{equation}
-	\ensuremath{ \gls{sym:wi} = 10^{ \gls{sym:b} \left( \gls{sym:Mc_rt} - \gls{sym:Md} \right) } }
+	\ensuremath{ w(\boldsymbol{r},t) = 10^{ \gls{sym:b}(\boldsymbol{r},t) \left[ \gls{sym:Mc_rt} - \gls{sym:Md}
+	\right] } },
 	\label{eq:helms_wi}
 \end{equation}
-onde  \gls{sym:wi} é o \glsdesc{sym:wi}, 
-	  \gls{sym:b} é o \glsdesc{sym:b}, 
+onde  \gls{sym:wi} é o \glsdesc{sym:wi} na localização $\boldsymbol{r}$ e no instante $t$, 
+	  \gls{sym:b}$(\boldsymbol{r},t)$ é o \glsdesc{sym:b}, 
 	  \gls{sym:Mc_rt} é a \glsdesc{sym:Mc_rt}, 
 	  \gls{sym:Md} é a \glsdesc{sym:Md}.
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+\subsection{Método acoplado dos vizinhos mais próximos}
+
+Em sismologia, as funções de núcleo no espaço e no tempo são usualmente estimadas
+pela distância entre cada tremor e seu $k^{simo}$ vizinho mais próximo. 
+
+A definição de cada $h_i$ e $d_i$ é feita por otimização, 
+pelo método acoplado do $k^{ésimo}$ vizinho mais próximo
+proposto por Choi and Hall, 1999 (REFERENCIA)
+com uma modificação para a função de núcleo temporal assimétrica.
+
+Para cada tremor $i$, as larguras de banda  $h_i$ e $d_i$ são escolhidas para
+minimizar a soma $h_i + a_{cnn}\,d_i$ sob a condição de que hajam ao menos $k_{cnn}$
+eventos à uma distância espacial menor que $d_i$ e, simultaneamente, estejam
+no intervalo de tempo $[t_i - h_i, t_i[$. O parâmetro $k_{cnn}$ controla a suavização 
+geral do modelo, e $a_{cnn}$ controla a importância relativa entre o tempo e o espaço.
+Valores altos de $a_{cnn}$ apresentam alta resolução espacial e, ao mesmo tempo, 
+são mais suaves no domínio do tempo. Em outras palavras:
 
 \begin{equation}
 	\ensuremath{
@@ -317,7 +345,7 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 					  \gls{sym:k_cnn},\gls{sym:a_cnn}
 			     \right) 
 			   := h_i + \gls{sym:a_cnn}d_i 
-	    \right]  
+	    \right],
 	}
 	\label{eq:helms_cnn}
 \end{equation}
@@ -326,10 +354,46 @@ onde \gls{sym:k_cnn} é o \glsdesc{sym:k_cnn},
 	 \gls{sym:dk} é o \glsdesc{sym:dk} e 
 	 \gls{sym:hk} é o \glsdesc{sym:hk}.
 
+As larguras de bandas são escolhidas localmente, podendo ser menor, aumentando a resolução 
+onde há maior densidade de informação, ou crescer onde há escassez de informação e menor resolução.
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
 
+\subsection{Taxa de sismicidade estacionária}
+Mesmo havendo modelado a dependência com o tempo para distribuição da taxa de sismicidade,
+a taxa estacionária $\bar{R}$ que se preserva no longo-prazo em uma determinada localização  
+$\boldsymbol{r}_0$ é a que mais interessa à \gls{psha} e
+será o valor da mediana da taxa fornecida pelo modelo no período considerado:
+
+\begin{equation}
+	\ensuremath{
+		\bar{R}(\boldsymbol{r}_0) = \text{Mediana}\left[R(\boldsymbol{r}_0, t)\right].
+	}
+	\label{eq:helms_mediana}
+\end{equation}
+
+O fato de se tomar a mediana faz com que variações na taxa de sismicidade devido a pré e pós-eventos
+não interfiram significativamente no valor da taxa estacionária. A decorrência mais importante desse fato
+é que o método dispensa a remoção de agrupamentos (seção \ref{sec:} VER SECAO) do catálogo, um método paramétrico e
+quase sempre controverso.
+
+\subsection{Verossimilhança}
+
+Para otimizar os parâmetros do modelo de Helmstetter, é preciso dividir o catálogo de sismos.
+Uma parte serve para o aprendizado do modelo e a outra para avaliação.
+
+Se a ocorrência de tremores pode ser modelada por um processo de Poisson com taxa $N_p$, 
+então a probabilidade de se observar exatamente $n$ eventos no período de tempo considerado é dada por
+
+\begin{equation}
+	\ensuremath{
+		\gls{sym:pNn} = \frac{{N_p}^n e^{-N_p}}{n!}.
+	}
+	\label{eq:loglik}
+\end{equation}
+
+E o logarítmo, a ser maximizado, da verossimilhança entre 
+o que o modelo predisse e o que foi observado 
+pode ser escrito como
 
 \begin{equation}
 	\ensuremath{
@@ -337,40 +401,16 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 	}
 	\label{eq:loglik}
 \end{equation}
-onde \ldots.
+onde \gls{sym:Np} é \glsdesc{sym:Np},
+	\gls{sym:nxy} é \glsdesc{sym:nxy}.
 
+Os parâmetros $R_{min}$, $a_{cnn}$ e $k_{cnn}$ do modelo são otimizados 
+pela maximização da verossimilhança $L$.
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+\subsection{Ganho}
 
-
-\begin{equation}
-	\ensuremath{
-		\gls{sym:pNn} = \frac{{N_p}^n e^{-N_p}}
-							 {n!}
-	}
-	\label{eq:loglik}
-\end{equation}
-onde \ldots.
-
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-\begin{equation}
-	\ensuremath{
-		\gls{sym:G} = e^{ \frac{\gls{sym:L} - \gls{sym:Lu}}{\gls{sym:Nt}}   }
-	}
-	\label{eq:gain}
-\end{equation}
-onde \ldots.
-
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
+Uma distribuição de Poisson espacialmente uniforme para a sismicidade com taxa $N_u$
+teria sua verossimilhança $L_u$ expressa por
 \begin{equation}
 	\ensuremath{
 		\gls{sym:Lu} = -N_t + 
@@ -379,13 +419,21 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 	}
 	\label{eq:lu}
 \end{equation}
-onde \ldots.
+onde $N_u = N_t/N_c$ com $N_t$ o número de sismos no catálogo-alvo e $N_c$ o número de células, 
 
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+O ganho de probabilidade $G$ por tremor predito no catálogo-alvo (de teste)
+sobre o que seria predito por uma distribuição espacialmente uniforme 
+foi definido por (KAGAN, KNOPOFF, 1977) como
+\begin{equation}
+	\ensuremath{
+		\gls{sym:G} = e^{ \frac{\gls{sym:L} - \gls{sym:Lu}}{\gls{sym:Nt}}   }.
+	}
+	\label{eq:gain}
+\end{equation}
 
-
+Quando se compara dois modelos frente o mesmo catálogo-alvo, com a mesma quantidade de tremores $N_t$,
+a equação \ref{eq:gain} pode ser simplificada, pois 
 \begin{equation}
 	\ensuremath{
 	\begin{align}
@@ -395,13 +443,9 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 	\end{align}}
 	\label{eq:llu}
 \end{equation}
-onde \ldots.
 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
+e o ganho $G$ do modelo passa a ser o mesmo que média geométrica da taxa prevista pelo modelo sobre 
+a taxa uniforme em todas as células:
 \begin{equation}
 	\ensuremath{
 	\begin{align}
@@ -413,29 +457,40 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 	\end{align}}
 	\label{eq:G}
 \end{equation}
-onde \ldots.
+onde $\langle\cdot\rangle_{geom}$ significa média geométrica.
 
+\subsection{Testes}
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+Helmstetter \emph{et al} usam os testes propostos por Rhoades et al (2011)
+REFERENCIA para comparar diferentes modelos.
 
+O teste-T avalia quando o ganho de informação de um modelo é significativamente diferente
+de um outro.
+
+Para isso as taxas preditas pelos modelos são re-normalizadas para que o valor da taxa de sismicidade
+prevista pelos modelos seja igual à taxa observada.
+
+Sendo \gls{sym:NAi} a \glsdesc{sym:NAi} e \gls{sym:NBi} a \glsdesc{sym:NBi}, o ganho de informação $I$
+por tremor, definido por Rhoades 2011 REFERENCIA, se reduz à 
 \begin{equation}
 	\ensuremath{
 		\gls{sym:I} = \frac{1}{\gls{sym:Nt}} 
 					  \sum_{i = 1}^{N_t}\log\left[ \frac{\gls{sym:NAi}}
-					  								  {\gls{sym:NBi}}  \right]
+					  								  {\gls{sym:NBi}}  \right].
 	}
-	\label{eq:gain}
+	\label{eq:gain_info}
 \end{equation}
-onde \ldots.
+
+O ganho de informação $I$ se relaciona com o ganho dos modelos (eq. \ref{eq:gain}) por
+\begin{equation}
+	\ensuremath{
+		I = \log\left(\frac{G_A}{G_B}\right).
+	}
+	\label{eq:gain_info_G}
+\end{equation}
 
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
-
+A variância da amostra de Rhoades apresentada por Helmstetter é 
 
 \begin{equation}
 	\ensuremath{
@@ -445,32 +500,37 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 						{x_i}^2 
 					\right)}
 					- 
-					\frac{1}{{N_t}^2 - N_t}
+					\frac{1}{{N_t}^2 - N_t}s
 					{\left(
 						\sum_{i=1}^{N_t}{x_i}
-					\right)}^2
+					\right)}^2,
 	}
 	\label{eq:var}
 \end{equation}
-onde \ldots.
+onde $x_i = \log\left[ \gls{sym:NAi} / \gls{sym:NBi}  \right]$.
 
-
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-
-
+Seja o valor $T_s$ também definido por Rhoades e apresentado por Helmstetter
 
 \begin{equation}
 	\ensuremath{
-		\gls{sym:T} = \frac{I\sqrt{N_t}}{\sigma}
+		\gls{sym:Ts} = \frac{I\sqrt{N_t}}{\sigma}.
 	}
 	\label{eq:T}
 \end{equation}
-onde \ldots.
 
+Se $x_i$ é independente e tem distribuição normal,
+então $T_s$ deve ter distribuição de Student com $N_t - 1$ graus de liberdade. Para grandes valores de $N_t$
+a distribuição converge rapidamente para a normal.
 
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
+O valor do ganho de informação é considerado significante se $T_s > 2$ no intervalo de 95\% de confiança.
+
+O teste de Wilcoxon (Siegem, 1956) REFERENCIA é usado no caso de que $x_i$ não tenha distribuição normal
+mas permanece simétrica e independente (Rhoades 2011) REFERENCIA.
+Esse teste avalia o quanto a mediana de $x_i$ difere significativamente de zero.
+Isso é o mesmo que avaliar o quanto a taxa prevista por um modelo é significativamente diferente da prevista por 
+outro modelo.
+
+A probabilidade $p_W$ de se observar um valor maior que a mediana de $x_i$ é retornada pelo teste.
+Valores de $p_W < 0.05$ indicam que a mediana de $x_i$ é significativamente diferente de 0.
 
 
