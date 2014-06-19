@@ -30,6 +30,8 @@
 %\usepackage[bf,small,compact]{titlesec} % cabeçalhos dos títulos: menores e compactos
 \usepackage[fixlanguage]{babelbib}
 \usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage[font=footnotesize]{subcaption}
+%\usepackage{subfigure}
 \usepackage[usenames,svgnames,dvipsnames]{xcolor}
 \usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry} % margens
 %\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black,filecolor=black,bookmarksopen=true]{hyperref} % links em preto
@@ -38,14 +40,23 @@
 \usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=Green,bookmarksopen=true]{hyperref}
 % links coloridos
 
+\captionsetup[subcaption]{font=footnotesize}
+
 % ---------------------------------------------------------------------------- %
 % fontes e símbolos
 \usepackage{amsfonts}
 \usepackage{textcomp}
 
+% multicols wrapfig
+\usepackage{multicol}
+\usepackage{wrapfig}
+
 % ---------------------------------------------------------------------------- %
 % Teoremas
 \usepackage{amsthm}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{\bf{Lema}}
+
 % ---------------------------------------------------------------------------- %
 % Equações Numeradas
 \usepackage{amsmath}
@@ -173,13 +184,13 @@ framexrightmargin=10pt
     \vskip 1.5cm
     Programa: Modelagem Matemática de Informação\\
     Orientador: Prof. Dr. Vincent Guigues\\
-    Coorientador: Prof. Dr. Stephane Drouet
+    %Coorientador: Prof. Dr. Stephane Drouet
 
    	\vskip 1cm
     \normalsize{}
     
     \vskip 0.5cm
-    \normalsize{Rio de Janeiro, maio de 2014}
+    \normalsize{Rio de Janeiro, junho de 2014}
 \end{center}
 
 % ---------------------------------------------------------------------------- %
@@ -276,49 +287,50 @@ Aos companheiros e professores pelas conversas e discussões ao longo do curso.
 
 Aos meus amigos e familiares pela benevolência de sempre.
 
-
+A Didi.
 % ---------------------------------------------------------------------------- %
 % Resumo
 \chapter*{Resumo}
 
-\noindent PIRCHINER, M. \textbf{\glsdesc*{titulo_da_dissertacao}}. 
-2014. 120 f.
-Dissertação (Mestrado) - Escola de Matemática Aplicada,
-Fundação Getúlio Vargas, Rio de Janeiro, 2014.
+A avaliação de risco sísmico, fundamental para as decisões sobre as estruturas de obras de engenharia
+e mitigação de perdas, envolve fundamentalmente a análise de ameaça sísmica, ou o nível de 
+determinada medida de intensidade em certo local, no qual, durante um certo tempo, a chance de que 
+essa intensidade seja excedida seja de um certo percentil de probabilidade.
 
+Dependendo da complexidade da atividade geológica essas estimativas podem ser bastante sofisticadas.
+Em locais com baixa sismicidade, como é o caso do Brasil, o pouco tempo (geológico) de observação
+e a pouca quantidade de informação são fonte de muitas incertezas e dificuldade de análise pelos métodos mais clássicos
+e conhecidos que geralmente consideram, através de opiniões de especialistas, determinadas zonas sísmicas.
 
+Esse texto discute algumas técnicas de suavização e seus fundamentos como métodos alternativos ao zoneamento,
+em seguida se exemplifica suas aplicações no caso brasileiro.
 
-
-Elemento
-obrigatório, constituído de uma sequência de frases concisas e objetivas, em forma de texto.  
-Deve apresentar os objetivos, métodos empregados, resultados e conclusões.  
-O resumo deve ser redigido em parágrafo único, conter
-no máximo 500 palavras e ser seguido dos termos representativos do conteúdo do
-trabalho (palavras-chave). 
-
-
-
-\noindent \textbf{Palavras-chave:} smoothing, zoneless, seismic hazard,
-earthquake engineering.
+\noindent \textbf{Palavras-chave:} terremotos, ameaça sísmica, suavização.
 
 % ---------------------------------------------------------------------------- %
 % Abstract
 \chapter*{Abstract}
-\noindent PIRCHINER, M. \textbf{Long-term non-parametric probabilistic seismic
-hazard analysis for Brazil}.
-2014. 120 f.
-Dissertação (Mestrado) - Escola de Matemática Aplicada,
-Fundação Getúlio Vargas, Rio de Janeiro, 2014.
+\noindent PIRCHINER, M. \textbf{Smoothing seismicity techniques applied to probabilistic seismic
+hazard analysis in Brazil}.
+2014.
+Master thesis - Applied Math School,
+Getúlio Vargas Foundation, Rio de Janeiro, 2014.
 \\
 
-Elemento obrigatório, elaborado com as mesmas características do resumo em
-língua portuguesa. De acordo com o Regimento da Pós- Graduação da USP (Artigo
-99), deve ser redigido em inglês para fins de divulgação. 
+Seismic risk assesment is crucial to make better decisions about engineering structures and loss mitigation.
+It involves, mainly, the evaluation of seismic hazard, or in other words, the level of some intensity ground motion
+measure, in a given site, which, in some time window, will be exceeded in some probability percentile.
 
+Depending on geological and tectonic complexity, the seismic hazard evaluation becomes more sofisticated.
+At sites with low seismicity, which is the brazilian case, the relative (geologically) low observation time
+and the lack of earthquake and tectonic information, increases the uncertainties and makes more difficult
+the standard analysis, which in general, consider expert opinions, to characterize the
+seismicity into disjoint zones. 
 
+This text discusses some smoothing seismicity techniques and their theoretical foundations as alternative
+methods for seismicity characterization. Next, the methods are exemplified in the brasilian context.
 
-
-\noindent \textbf{Keywords:} keyword1, keyword2, keyword3.
+\noindent \textbf{Keywords:} earthquakes, seismic hazard, smoothing.
 
 % ---------------------------------------------------------------------------- %
 % Sumário
@@ -390,7 +402,7 @@ língua portuguesa. De acordo com o Regimento da Pós- Graduação da USP (Artig
 \appendix
 
 % ============================================================================ %
-\include{a01-conjuntos}      % associado ao arquivo: 'ape-conjuntos.tex'
+%\include{a01-conjuntos}      % associado ao arquivo: 'ape-conjuntos.tex'
 % ============================================================================ %
 
 

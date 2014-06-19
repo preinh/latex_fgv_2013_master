@@ -49,7 +49,7 @@ contando, à partir de um catálogo com tempo de observação conhecido,
 Isso seria equivalente a preparar um histograma normalizado 
 dos tremores em duas (ou três, considerando a profundidade) dimensões.
 
-O que se busca, em geral, pelas técnicas de suavização é justamente suavizar essas contagens ou esse histograma
+O que se busca, em geral, por essas técnicas é suavizar justamente essas contagens ou esse histograma
 normalizado que representa uma estimativa da função de densidade de probabilidade da taxa de ocorrência espacial de tremores. 
 
 %\newtheorem{prop}{Proposição}
@@ -63,7 +63,7 @@ obtidos pela contagem anterior, considere um modelo para a taxa de sismicidade $
 em uma determinada célula $x_i$ a partir dessa amostra dado por
 \begin{equation}
 	\ensuremath{
-		R(x_i) = \lambda(x_i) + \epsilon(x_i),\;\;\; i=1..n
+		R(x_i) = \lambda(x_i) + \epsilon(x_i),\;\;\; i=1,\dots,n
 	}
 \label{eq:rate_model}
 \end{equation}
@@ -80,15 +80,15 @@ $\sum_{i=1}^{n}w_i(x) = 1$, como sendo
 
 \begin{equation}
 	\ensuremath{
-		\hat{\lambda}(x) = \sum_{i=1}^{n}w(x_i)\,R_i.
+		\hat{\lambda}(x) = \sum_{i=1}^{n}w_i(x)\,R_i.
 	}
 \label{eq:rate_estim}
 \end{equation}
 
 A questão passa a ser então como encontrar essa sequência de pesos $w_i$.
 
-\subsection{Função de Núcleo e Estimadores de Naradaya-Watson}
-
+\subsection{Função de Núcleo e Estimadores de Nadaraya-Watson}
+\label{sec:nadaraya}
 Uma função de núcleo $K$ (\emph{Kernel}) é qualquer função par, contínua e limitada que satisfaz as seguintes
 propriedades:
 
@@ -105,10 +105,10 @@ propriedades:
 \end{center}
 
 Uma das possíveis maneiras de se encontrar os pesos $w_i$ é o 
-Estimador de Naradaya-Watson (REFERENCIA). 
+Estimador de Nadaraya-Watson \citep{nadaraya_1965}. 
 
 Seja $h \in \mathbb{R}, h > 0$ e $K$ uma função de núcleo. 
-Naradaya e Watson propõem, para a estimativa \ref{eq:rate_estim}, os pesos
+Nadaraya e Watson propõem, para a estimativa \eqref{eq:rate_estim}, os pesos
 \begin{equation}
 	\ensuremath{
 		w_i(x) = \frac{ K\left( \frac{x - x_i}{h} \right)}
@@ -122,40 +122,40 @@ onde $h$ é conhecida como largura de banda ou \emph{bandwidth}.
 
 \subsection{Formas das funções de núcleo}
 
-Dentre as possíveis expressões para as funções de núcleo é relevante destacar nesse texto duas. 
+Dentre as possíveis expressões para as funções de núcleo é relevante destacar duas \citep{kagan_2000}. 
 
-A equação \ref{eq:kernel_gs} apresenta a expressão da função de núcleo gaussiana:
+A equação \eqref{eq:kernel_gs} apresenta a expressão da função de núcleo gaussiana:
 
 \begin{equation}
 	\ensuremath{
-		K_{gs}(\gls{sym:r}\arrowvert h) = \dot{\eta}(h)
+		K_{gs}(\gls{sym:r}\arrowvert h) = \eta_1(h)
 			e^{- \frac{\|\gls{sym:r}\|^2}
  				 	  {2 h^2 }},
  	}
 \label{eq:kernel_gs}
 \end{equation}
-onde $h$ é a largura de banda definida para a função de núcleo e $\dot{\eta}(h)$ um fator de normalização
+onde $h$ é a largura de banda definida para a função de núcleo e $\eta_1(h)$ um fator de normalização
 para que sua integral seja igual à unidade.
 
 
 Outra forma possível para a função de núcleo é uma Lei de Potência (\emph{power-law}), que decai com o 
 inverso do quadrado da distância, como na equação
-\ref{eq:kernel_pl} a seguir:
+\eqref{eq:kernel_pl} a seguir:
 
 \begin{equation}
 	\ensuremath{
 		K_{pl}(\gls{sym:r}\arrowvert h) = 
-			\frac{\ddot{\eta}(h)}
+			\frac{\eta_2(h)}
  				 {\left( \|\gls{sym:r}\|^2 + h^2 \right)^{\frac{3}{2}} },
  	}
 \label{eq:kernel_pl}
 \end{equation}
-onde $h$ é a largura de banda definida para a função de núcleo e $\ddot{\eta}(h)$ um fator de normalização
+onde $h$ é a largura de banda definida para a função de núcleo e $\eta_2(h)$ um fator de normalização
 para que sua integral também seja igual à unidade.
 
 
 Quaisquer dessas duas funções podem ser usadas como função de núcleo 
-para os estimadores de Naradaya-Watson apresentados anteriormente.
+para os estimadores de Nadaraya-Watson apresentados anteriormente.
 
 \subsection{Contribuição de uma função de núcleo bidimensional}
 
@@ -165,7 +165,7 @@ Se, em vez de suavizar o histograma do catálogo sísmico numa malha regular, a 
 avaliar a contribuição em probabilidade pela \gls{pdf} de cada tremor em uma determinada célula da malha, 
 é possível considerar uma função de núcleo como a \gls{pdf} da ocorrência de cada tremor, e,
 essa contribuição numa célula $j$, devido ao tremor $i$ em $\boldsymbol{r}_i$, dada pela integral da
-função de núcleo na área/volume da célula: 
+função de núcleo na área/volume da célula \citep{zechar_2010-2}: 
 \begin{equation}
 	\ensuremath{
 		R_{j}(\boldsymbol{r}_i \arrowvert h) = \int\limits_{\mathrm{cell}\;j}\!K( \gls{sym:r} -
@@ -176,7 +176,7 @@ onde $h$ é a largura de banda da suavização.
 
 
 Em todos os casos apresentados, é fácil notar que, a determinação da largura de banda influencia diretamente
-a estimativa da taxa de sismicidade. Os métodos estudados aqui variam essencialmente 
+a estimativa da taxa de sismicidade. Os métodos estudados variam essencialmente 
 na forma com que a escolha da largura de banda é concebida e proposta.
 
 
@@ -186,8 +186,8 @@ na forma com que a escolha da largura de banda é concebida e proposta.
 \index{Frankel, 1995}
 \label{sec:frankel}
 
-A proposta de Arthur Frankel (REFERENCIA) foi usar uma largura de banda fixa, 
-nomeada distância de correlação $d_F$, e aplicar o estimador de Naradaya-Watson (REFERENCIA)
+A proposta de Arthur \citet{frankel_1995} foi usar uma largura de banda fixa, 
+nomeada distância de correlação $d_F$, e aplicar o estimador de Nadaraya-Watson (\ref{sec:nadaraya})
 para suavizar o histograma 2D da sismicidade utilizando uma função de núcleo gaussiana:
 \begin{equation}
 	\ensuremath{
@@ -202,9 +202,9 @@ na célula $j$, $n_i$ é o número de sismos em cada outra célula $i$ e
 	\gls{sym:dij} é \glsdesc{sym:dij}.
 
 
-Zechar \& Jordan (REFERENCIA) propuseram uma variação da abordagem de Frankel avaliando a contribuição
+\citet{zechar_2010-2} propuseram uma variação da abordagem de Frankel avaliando a contribuição
 de cada tremor $i$ na célula $j$ em vez de suavizar o histograma 2D, mas para isso
-é preciso avaliar essa contribuição como na equação \ref{eq:kernel_int}.
+é preciso avaliar essa contribuição como na equação \eqref{eq:kernel_int}.
 
 
 %% ------------------------------------------------------------------------- %%
@@ -212,7 +212,7 @@ de cada tremor $i$ na célula $j$ em vez de suavizar o histograma 2D, mas para i
 \index{Woo, 1996}
 \label{sec:woo}
 
-Já Gordon Woo (REFEERENCIA) propôs avaliar a contribuição de uma função de núcleo 
+Já Gordon \citet{woo_1996} propôs avaliar a contribuição de uma função de núcleo 
 de cada sismo $i$ ocorrido em $\boldsymbol{r}_i$ 
 na célula centrada em $\boldsymbol{r}$ que dependa também de sua
 magnitude $m$:
@@ -227,29 +227,28 @@ onde $N$ é o número de tremores $i$ no catálogo
 e $T(\gls{sym:ri})$ é o período em que todo sismo de magnitude acima de $m$ é completamente observado 
 em \gls{sym:ri}.
 
-A função de núcleo utilizada por Woo foi a proposta por Vere-Jones em 1992 (REFERENCIA) 
+A função de núcleo utilizada por Woo foi a proposta por \citet{kagan_knopoff_1980}
 para um domínio espacial infinito:
 \begin{equation}
 	\ensuremath{
-		K_{vj}(\gls{sym:r}, m \arrowvert \gls{sym:aW}) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
+		K_{KJ}(\gls{sym:r}, m \arrowvert \gls{sym:aW}) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
 							\left( 1 + \frac{\gls{sym:r}^2}{\gls{sym:hm}^2} \right)^{-\gls{sym:aW}},
 	}
-	\label{eq:krm1}
+	\label{eq:k_kj}
 \end{equation}
 onde \gls{sym:aW} é \glsdesc{sym:aW}.
 
-Na ordem prática, o tempo computacional deve ser reduzido e é prudente utilizar uma
-variante limitada para a função de núcleo proposta por Vere-Jones:\begin{equation}
+Uma variante limitada para a função de núcleo foi proposta por \citet{verejones_1992}:\begin{equation}
 	\ensuremath{
-		K_{vj}(\gls{sym:r}, m \arrowvert \gls{sym:DW}) = 
+		K_{VJ}(\gls{sym:r}, m \arrowvert \gls{sym:DW}) = 
 		\begin{cases}
-			\frac{\gls{sym:DW}}{2\pi \gls{sym:hm}^2} 
+			\frac{\gls{sym:DW}}{2\pi\,\gls{sym:hm}} 
 			\left( \frac{\gls{sym:hm}}{\gls{sym:r}} \right)^{2 - \gls{sym:DW}} 
 			  & \gls{sym:r} \leq \gls{sym:hm} \\
 			0 & \gls{sym:r} > \gls{sym:hm}
 		\end{cases},
 	}
-	\label{eq:krm2}
+	\label{eq:k_vj}
 \end{equation}
 onde \gls{sym:DW} é \glsdesc{sym:DW}.
 
@@ -258,7 +257,7 @@ Para a largura de banda \gls{sym:hm}, nos dois casos, Gordon Woo propôs utiliza
 	\ensuremath{
 		h(m\arrowvert \gls{sym:a0}, \gls{sym:a1}) = \gls{sym:a0}e^{\gls{sym:a1}m},
 	}
-	\label{eq:krm2}
+	\label{eq:hm}
 \end{equation}
 em que $a_0$ e $a_1$ são determinados pela regressão entre a 
 distância média de cada tremor ao vizinho mais próximo $h$ em cada faixa de magnitude $m \pm \mathrm{d}m$.
@@ -270,7 +269,7 @@ distância média de cada tremor ao vizinho mais próximo $h$ em cada faixa de m
 \index{hemlstetter, 2012}
 \label{sec:helmstetter}
 
-O trabalho de  Agnès Helmstetter e Maximilian Werner (REFERENCIA) é focado principalmente em 
+O trabalho de  Agnès Helmstetter e Maximilian Werner \citep{helmstetter_2012} é focado principalmente em 
 projeção de longo-prazo para ocorrência de tremores/rupturas. 
 O principal pressuposto dessa técnica (seção \ref{sec:projecao}) é que nesse período a taxa
 de sismicidade se mantenha invariante.
@@ -305,7 +304,7 @@ que ocorreram onde e quando a magnitude de completude $M_c$ era maior que
 a mínima magnitude $M_d$ do catálogo 
 em locais onde a magnitude do completude e o valor-b variam. 
 Note que o modelo de pesos acomoda bem variações espaciais e
-temporais tanto da magnitude de completude como do valor-b. A expressão é a seguinte:
+temporais tanto da magnitude de completude como do \emph{valor-b}. A expressão é a seguinte:
 \begin{equation}
 	\ensuremath{ w(\boldsymbol{r},t) = 10^{ \gls{sym:b}(\boldsymbol{r},t) \left[ \gls{sym:Mc_rt} - \gls{sym:Md}
 	\right] } },
@@ -323,7 +322,7 @@ pela distância entre cada tremor e seu $k^{simo}$ vizinho mais próximo.
 
 A definição de cada $h_i$ e $d_i$ é feita por otimização, 
 pelo método acoplado do $k^{ésimo}$ vizinho mais próximo
-proposto por Choi and Hall, 1999 (REFERENCIA)
+proposto por \citet{choi_1999}
 com uma modificação para a função de núcleo temporal assimétrica.
 
 Para cada tremor $i$, as larguras de banda  $h_i$ e $d_i$ são escolhidas para
@@ -373,7 +372,7 @@ será o valor da mediana da taxa fornecida pelo modelo no período considerado:
 
 O fato de se tomar a mediana faz com que variações na taxa de sismicidade devido a pré e pós-eventos
 não interfiram significativamente no valor da taxa estacionária. A decorrência mais importante desse fato
-é que o método dispensa a remoção de agrupamentos (seção \ref{sec:} VER SECAO) do catálogo, um método paramétrico e
+é que o método dispensa a remoção de agrupamentos (seção \ref{sec:declustering}) do catálogo, um método paramétrico e
 quase sempre controverso.
 
 \subsection{Verossimilhança}
@@ -424,7 +423,7 @@ onde $N_u = N_t/N_c$ com $N_t$ o número de sismos no catálogo-alvo e $N_c$ o n
 
 O ganho de probabilidade $G$ por tremor predito no catálogo-alvo (de teste)
 sobre o que seria predito por uma distribuição espacialmente uniforme 
-foi definido por (KAGAN, KNOPOFF, 1977) como
+foi definido por \citet{kagan_knopoff_1977} como
 \begin{equation}
 	\ensuremath{
 		\gls{sym:G} = e^{ \frac{\gls{sym:L} - \gls{sym:Lu}}{\gls{sym:Nt}}   }.
@@ -433,7 +432,7 @@ foi definido por (KAGAN, KNOPOFF, 1977) como
 \end{equation}
 
 Quando se compara dois modelos frente o mesmo catálogo-alvo, com a mesma quantidade de tremores $N_t$,
-a equação \ref{eq:gain} pode ser simplificada, pois 
+a equação \eqref{eq:gain} pode ser simplificada, pois 
 \begin{equation}
 	\ensuremath{
 	\begin{align}
@@ -461,8 +460,8 @@ onde $\langle\cdot\rangle_{geom}$ significa média geométrica.
 
 \subsection{Testes}
 
-Helmstetter \emph{et al} usam os testes propostos por Rhoades et al (2011)
-REFERENCIA para comparar diferentes modelos.
+\citet{helmstetter_2012} usam os testes propostos por \citet{schorlemmer_2007}
+e \citet{rhoades_2011} para comparar diferentes modelos.
 
 O teste-T avalia quando o ganho de informação de um modelo é significativamente diferente
 de um outro.
@@ -470,8 +469,8 @@ de um outro.
 Para isso as taxas preditas pelos modelos são re-normalizadas para que o valor da taxa de sismicidade
 prevista pelos modelos seja igual à taxa observada.
 
-Sendo \gls{sym:NAi} a \glsdesc{sym:NAi} e \gls{sym:NBi} a \glsdesc{sym:NBi}, o ganho de informação $I$
-por tremor, definido por Rhoades 2011 REFERENCIA, se reduz à 
+Sendo \gls{sym:NAi} a \glsdesc{sym:NAi} e \gls{sym:NBi} a \glsdesc{sym:NBi}, o ganho de informação $I_{inf}$
+por tremor se reduz à 
 \begin{equation}
 	\ensuremath{
 		\gls{sym:I} = \frac{1}{\gls{sym:Nt}} 
@@ -481,10 +480,10 @@ por tremor, definido por Rhoades 2011 REFERENCIA, se reduz à
 	\label{eq:gain_info}
 \end{equation}
 
-O ganho de informação $I$ se relaciona com o ganho dos modelos (eq. \ref{eq:gain}) por
+O ganho de informação $I_{inf}$ se relaciona com o ganho dos modelos (eq. \eqref{eq:gain}) por
 \begin{equation}
 	\ensuremath{
-		I = \log\left(\frac{G_A}{G_B}\right).
+		I_{inf} = \log\left(\frac{G_A}{G_B}\right).
 	}
 	\label{eq:gain_info_G}
 \end{equation}
@@ -494,13 +493,13 @@ A variância da amostra de Rhoades apresentada por Helmstetter é
 
 \begin{equation}
 	\ensuremath{
-		\sigma^2(x_i) = 	\frac{1}{N_t - 1}
+		\sigma^2 = 	\frac{1}{N_t - 1}
 					{\left(
 					\sum_{i-1}^{N_t}
 						{x_i}^2 
 					\right)}
 					- 
-					\frac{1}{{N_t}^2 - N_t}s
+					\frac{1}{{N_t}^2 - N_t}
 					{\left(
 						\sum_{i=1}^{N_t}{x_i}
 					\right)}^2,
@@ -513,7 +512,7 @@ Seja o valor $T_s$ também definido por Rhoades e apresentado por Helmstetter
 
 \begin{equation}
 	\ensuremath{
-		\gls{sym:Ts} = \frac{I\sqrt{N_t}}{\sigma}.
+		\gls{sym:Ts} = \frac{I_{inf}\sqrt{N_t}}{\sigma}.
 	}
 	\label{eq:T}
 \end{equation}
@@ -524,8 +523,8 @@ a distribuição converge rapidamente para a normal.
 
 O valor do ganho de informação é considerado significante se $T_s > 2$ no intervalo de 95\% de confiança.
 
-O teste de Wilcoxon (Siegem, 1956) REFERENCIA é usado no caso de que $x_i$ não tenha distribuição normal
-mas permanece simétrica e independente (Rhoades 2011) REFERENCIA.
+O teste de Wilcoxon é usado no caso de que $x_i$ não tenha distribuição normal
+mas permanece simétrica e independente \citep{rhoades_2011}.
 Esse teste avalia o quanto a mediana de $x_i$ difere significativamente de zero.
 Isso é o mesmo que avaliar o quanto a taxa prevista por um modelo é significativamente diferente da prevista por 
 outro modelo.

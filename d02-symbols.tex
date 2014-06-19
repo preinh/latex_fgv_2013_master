@@ -77,14 +77,6 @@
 	type=symbols
 }
 
-\newglossaryentry{sym:km}
-{
-	name={km},
-	description={kilometros},
-	symbol={km},
-	type=symbols
-}
-
 \newglossaryentry{sym:M_0}
 {
 	name={\ensuremath{M_0}},
@@ -121,7 +113,7 @@
 }
 
 
-\newglossaryentry{sym:M_W}
+\newglossaryentry{sym:MW}
 {
 	name={\ensuremath{M_W}},
 	description={magnitude de momento sísmico},
@@ -166,8 +158,8 @@
 
 \newglossaryentry{sym:N_m}
 {
-	name={\ensuremath{N(m,m+dm)}},
-	description={número de eventos com magnitude entre $m$ e $m + dm$ },
+	name={\ensuremath{N(m,m+\mathrm{d}m)}},
+	description={número de eventos com magnitude entre $m$ e $m + \mathrm{d}m$ },
 	symbol={\ensuremath{N(m)}},
 	type=symbols
 }
@@ -196,6 +188,8 @@
 	symbol={\ensuremath{m_c}},
 	type=symbols
 }
+
+
 
 \newglossaryentry{sym:m_corner}
 {
@@ -291,6 +285,15 @@
 	type=symbols
 }
 
+
+\newglossaryentry{sym:Mc}
+{
+	name={\ensuremath{M_c}},
+	description={magnitude de completude},
+	symbol={\ensuremath{M_c}},
+	type=symbols
+}
+
 \newglossaryentry{sym:Md}
 {
 	name={\ensuremath{M_d}},
@@ -378,7 +381,7 @@
 \newglossaryentry{sym:dk}
 {
 	name={\ensuremath{d_k}},
-	description={$\max{\left\{ d_j \right\}}, j=1.. k_{cnn}$},
+	description={$\max{\left\{ d_j \right\}}, j=1,\ldots,k_{cnn}$},
 	symbol={\ensuremath{d_k}},
 	type=symbols
 }
@@ -386,7 +389,7 @@
 \newglossaryentry{sym:hk}
 {
 	name={\ensuremath{h_k}},
-	description={$\max{\left\{ h_j \right\} }, j=1.. k_{cnn}$},
+	description={$\max{\left\{ h_j \right\} }, j=1,\ldots,k_{cnn}$},
 	symbol={\ensuremath{h_k}},
 	type=symbols
 }
@@ -530,9 +533,9 @@
 
 \newglossaryentry{sym:I}
 {
-	name={\ensuremath{ I(A,B)}},
+	name={\ensuremath{ I_{inf}(A,B)}},
 	description={ganho de informação do modelo $A$ sobre o modelo $B$}, 
-	symbol={\ensuremath{I(A,B)}}, 
+	symbol={\ensuremath{I_{inf}(A,B)}}, 
 	type=symbols
 }
 
@@ -552,7 +555,7 @@
 \newglossaryentry{sym:DW}
 {
 	name={\ensuremath{D_W}},
-	description={dimensão fractal dos epicentros $D_W = 2-\gls{sym:aW}}, 
+	description={dimensão fractal dos epicentros $D_W = 2-\gls{sym:aW}$}, 
 	symbol={\ensuremath{D_W}}, 
 	type=symbols
 }
@@ -604,6 +607,24 @@
 	name={\ensuremath{d_{ij}}},
 	description={distância entre a célula $i$ e a célula $j$ na malha}, 
 	symbol={\ensuremath{d_{ij}}}, 
+	type=symbols
+}
+
+
+\newglossaryentry{sym:I0}
+{
+	name={\ensuremath{I_0}},
+	description={intensidade máxima}, 
+	symbol={\ensuremath{I_0}}, 
+	type=symbols
+}
+
+
+\newglossaryentry{sym:Af}
+{
+	name={\ensuremath{A_{f}}},
+	description={área afetada medida em km$^2$}, 
+	symbol={\ensuremath{A_{f}}}, 
 	type=symbols
 }
 
