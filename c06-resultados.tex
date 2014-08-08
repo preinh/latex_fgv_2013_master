@@ -51,7 +51,7 @@ apresentadas na figura \ref{fig:a_dourado}.
   \centering
   \includegraphics[width=.80\textwidth]{a_dourado} 
   \caption{Zoneamento sísmico e caracterização das zonas sísmicas por \citep{dourado_2014}.
-  Os valores para a magnitude mínima foram de 3.0}
+  Os valores para a magnitude mínima foram de 3.0, e os \emph{valores-a} correspondem a magnitude maior que 0.}
   \label{fig:a_dourado} 
 \end{figure}
 
@@ -80,6 +80,8 @@ Openquake e os resultados estão apresentados na figura \ref{fig:pga_dourado_oq}
 \end{figure}
 
 Os resultados preservam as feições mas apresentam quantidade significativamente diferentes.
+Provavelmente devido ao fator de escala entre a magnitude e a área de ruptura utilizada,
+que sobrevalora a área de ruptura para magnitudes pequenas (menores que 5).
 
 
 %% ------------------------------------------------------------------------- %%
@@ -111,7 +113,7 @@ Apenas para comparação, o mesmo método foi empregado com o catálogo \gls{isc
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{a_frankel_sa} 
-  \caption{Mapa do valor-a, catálogo \gls{iscgem} [Frankel, 1995] }
+  \caption{Mapa do valor-a, catálogo \gls{iscgem} calculado pelo método de Frankel, 1995}
   \label{fig:a_fran_sa} 
 \end{figure}
 
@@ -180,8 +182,8 @@ para obter o \emph{valor-a}.
 		\subcaption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y), 
   		   calculado com o Openquake a partir das fontes sísmicas
   		   determinas pelo método de Woo, 1996, usando uma \gls{mfd}
-  		   truncada usando o valor-a como o calor cumulativo
-  		   contado a partir da \gls{sym:Mmin}.
+  		   truncada usando o valor-a como o valor cumulativo
+  		   contado a partir da \gls{sym:m_min}.
 		}
 		\label{fig:pga_woo_cum} 
 	\end{subfigure}
@@ -213,8 +215,8 @@ cumulativo e uma \gls{mfd} truncada, destacou principalmente as ameaças no cent
 \label{sec:helmstetter_resultados}
 
 A otimização dos parâmetros do modelo de Helmstetter conforme descrito na seção \ref{sec:proc_helmstetter}
-resultou, com ganho\footnote{equação \eqref{eq:gain}} $G = 2.43$, nos valores apresentados na tabela
-\ref{tab:hemlstetter}.
+resultou, com ganho\footnote{equação \eqref{eq:gain}} $G = 2.43$ sobre uma distribuição uniforme, nos valores
+apresentados na tabela \ref{tab:hemlstetter}.
 
 \begin{table}[H]
 	\centering
@@ -224,7 +226,7 @@ resultou, com ganho\footnote{equação \eqref{eq:gain}} $G = 2.43$, nos valores 
 		$a_{cnn}$ & 325 \\
 		$k_{cnn}$ & 1 \\
 	\end{tabular}
-	\caption{Parâmetros otimizados para o modelo de Helmstetter a partir do catálogo \gls{bsb2013}}
+	\caption{Parâmetros otimizados (método simplex) para o modelo de Helmstetter a partir do catálogo \gls{bsb2013}}
 	\label{tab:hemlstetter}
 \end{table}
 
@@ -250,7 +252,7 @@ com as taxas de sismicidade suavizadas pelo método.
   \includegraphics[width=.80\textwidth]{pga_helmstetter} 
   \caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y), 
   		   calculado com o OpenQuake a partir das fontes sísmicas
-  		   determinas pelo método de Helmstetter,2012 }
+  		   determinas pelo método de Helmstetter, 2012 }
   \label{fig:helm_h} 
 \end{figure}
 

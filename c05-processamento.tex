@@ -12,7 +12,7 @@ dos resultados que serão discutidos no próximo capítulo.
 
 Os dados utilizados foram os dados do catálogo \gls{iscgem} \citep{storchak_2013} 
 para a América do Sul e 
-os dados do \glsdesc{bsb2013} \citep{bsb2013} para o Brasil.
+os dados do \glsdesc{bsb2013} \citep{bsb_2013} para o Brasil.
 
 O dados são texto e formatados em arquivos de \gls{csv}.
 
@@ -51,7 +51,7 @@ O \glsdesc{iscgem} versão 1.04 possui licença CC-BY-SA e é fruto da redetermi
 dos terremotos com os dados disponíveis no ISC-GEM e de um detalhado estudo para que ao menos um valor de
 magnitude $\gls{sym:Mw}$ estivesse disponível com incertezas.
 
-Possui um pouco mais de 110 000 registros.  
+Possui pouco mais de 110 000 registros.  
 
 \subsection{Boletim Sísmico Brasileiro}
 \index{Conjunto de Dados!BSB}
@@ -81,7 +81,7 @@ para lidar com objetos com atributos geométricos.
 
 
 %% ------------------------------------------------------------------------- %%
-\subsection{Linguagens de Programação}
+\subsection{Linguagens de Programação para o Cálculo da Taxa de Sismicidade}
 \index{Linguagens de Programação}
 \label{sec:linguagens}
 
@@ -92,21 +92,18 @@ e estão em Fortran. O método de Frankel estava disponível em Python.
 
 
 %% ------------------------------------------------------------------------- %%
-\subsection{Programas de Computador}
+\subsection{Programas de Computador para Cálculo de Ameaça Sísmica}
 \index{Ferramentas!programas}\index{software}
 \label{sec:software}
 
-O programa mais comum para esse tipo de análise costuma ser o CRISIS \citep{crisis_2007} nas suas mais diversas
-versões. Como nesse trabalho a opção foi por código aberto, poderia ter se optado pelo 
+O programa mais comumente utilizado para análise de ameaça sísmica é o CRISIS \citep{crisis_2007} nas suas
+mais diversas versões. Como nesse trabalho a opção foi por código aberto, poderia ter se optado pelo 
 \gls{opensha}\footnote{\url{http://www.opensha.org}} que é escrito em Java.
-
 A intenção no entanto foi provar o conjunto de tecnologias mantido pela fundação \gls{gem}
-que para o cálculo de ameaça e rísco sísmico que é o \gls{oq} \citep{pagani_2014}.
+para o cálculo de ameaça e rísco sísmico que é o \gls{oq} \citep{pagani_2014}.
 
 O código do \gls{oq} está abertamente disponível para consulta e clonagem no GitHub
-\footnote{\url{https://github.com/GEM}}.
-
-O ecossistema do \gls{oq} é ilustrado na figura a seguir:
+\footnote{\url{https://github.com/GEM}} e seu \emph{ecossistema} é ilustrado na figura a seguir:
 
 \begin{figure}[!h]
   \centering
@@ -128,7 +125,7 @@ Permite também interagir com o resultado do cálculo, visualizando mapas de ame
 \index{ferramentas!bibliotecas}
 \label{sec:bibliotecas}
 
-Em amarelo na figura \ref{fig:oq} está biblioteca a \gls{hl} que contém toda lógica e ciência para o cálculo de ameaça,
+Em amarelo na figura \ref{fig:oq} está a \gls{hl} que contém toda lógica e ciência para o cálculo de ameaça,
 como os tipos de fontes sísmogênicas, as \gls{mfd}, as \glspl{gmpe}, etc. 
 
 Está também a \gls{rl}
@@ -170,12 +167,12 @@ Para aplicar as \gls{smoothing} no conjunto de dados é necessário alguns prime
 \index{pre-processamento!controle de qualidade}
 \label{sec:qualicontrol}
 
-A primeira coisa ser fazer no conjunto de dados é uma checagem geral.
+A primeira coisa a fazer no conjunto de dados é uma checagem geral.
 
 Nessa hora é preciso observar se não há pontos com coordenadas erradas, invertidas, faltando valores de dias ou horas.
 
 É recomendado também fazer uma varredura em busca de vieses no catálogo \citep{van_stiphout_2010}.
-Isso é feito com, por exemplo, um histogramas do dia da semana da ocorrência dos tremores em busca
+Isso é feito com, por exemplo, um histograma do dia da semana da ocorrência dos tremores em busca
 de algum descréscimo em fins de semana que seriam um provável indicativo de contaminação do catálogo 
 por atividade humana, por exemplo explosões em pedreiras. 
 Também é possível fazer um histograma para observar a
@@ -205,14 +202,14 @@ exploratória dos dados dos catálogos.
  	\begin{subfigure}[b]{0.45\textwidth}
 		  	\centering
 			\includegraphics[width=1.00\textwidth]{hmtk_sa3_hour}
-			\subcaption{Distribuição do horário de ocorrência dos tremores, \gls{iscgem}}
+			\subcaption{Distribuição do horário (GMT) de ocorrência dos tremores, \gls{iscgem}}
 			\label{fig:sa_hour_hist}
 	\end{subfigure}%
 	\quad %~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
 	\begin{subfigure}[b]{0.45\textwidth}
 		  	\centering
 			\includegraphics[width=1.00\textwidth]{hmtk_bsb2013_hour}
-			\subcaption{Distribuição do horário de ocorrência dos tremores, \gls{bsb2013}}
+			\subcaption{Distribuição do horário (GMT) de ocorrência dos tremores, \gls{bsb2013}}
 			\label{fig:br_hour_hist}
     \end{subfigure}%
         %~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
@@ -237,8 +234,8 @@ exploratória dos dados dos catálogos.
   \label{fig:qc_histograms} 
 \end{figure}
 
-Nas figuras \ref{fig:sa_week_hist} e \ref{fig:br_week_hist} não se observam grandes vieses em 
-relação aos dias da semana, nem nos horários de ocorrência durante o dia 
+Nas figuras \ref{fig:sa_week_hist} e \ref{fig:br_week_hist} não se observam grandes vieses aparentes 
+em relação aos dias da semana, nem aos horários de ocorrência durante o dia 
 (figuras \ref{fig:sa_week_hist} e \ref{fig:br_week_hist}) nos dois catálogos.
 
 No que diz respeito à distribuição de profundidade, o catálogo do ISC tem as
@@ -263,7 +260,7 @@ caso do \gls{bsb} a maior parte das magnitudes são regionais $m_R$ que se assem
 ou magnitudes estimadas a partir de dados macrossísmicos. Nos dois casos é preciso avaliar funções que relacionem os
 vários valores de magnitude e \gls{sym:MW}.
 
-Para o catálogo \gls{bsb} as relações conhecidas\footnotetext{por Assumpção,M. e Drouet, S. (não-publicado)} para serem
+Para o catálogo \gls{bsb} as relações conhecidas\footnote{por Assumpção,M. e Drouet, S. (não-publicado)} para serem
 usadas são as de equivalência entre $m_R$ e $m_b$:
 \begin{equation}
 	\ensuremath{
@@ -274,7 +271,7 @@ usadas são as de equivalência entre $m_R$ e $m_b$:
 as de conversão de $m_b$ em $\gls{sym:MW}$
 \begin{equation}
 	\ensuremath{
-		M_W(m_b) = 1.12 m_b + 0.76,
+		M_W(m_b) = 1.12 m_b - 0.76,
 	}
 \label{eq:mwmb}
 \end{equation}
@@ -286,7 +283,7 @@ as de conversão entre $A_f$ e $M_W$
 \label{eq:mwaf}
 \end{equation}
 onde \gls{sym:Af} é \glsdesc{sym:Af}; e por fim as estimativas de $m_b$ a partir da \glsdesc{sym:I0} (\gls{sym:I0})
-já calculadas quando presentes no catálogo.
+presentes no catálogo.
 
 NOTA: Essa etapa de pré-processamento, por simplicidade, não foi feita no escopo desse trabalho mas é aqui apresentada 
 como referência para trabalhos futuros.
@@ -340,7 +337,7 @@ E outra sugerida por \citet{uhrhammer_1986}
     e^{-2.87 + 1.235 m}
 \end{equation}
 
-Enquanto os métodos acima definem explicitamente a janela de tempo, Musson \citet{musson_1999}, propôs que as janelas de tempo
+Enquanto os métodos acima definem explicitamente a janela de tempo, \citet{musson_1999}, propôs que as janelas de tempo
 fossem janelas móveis em vez de fixas. Sua teoria é consistente com a de \citet{gardner_1974}.
 
 A figura \ref{fig:eq_decluster_cum} apresenta os resultados de distintos métodos e janelas aplicados aos 
@@ -363,11 +360,12 @@ catálogos.
 			original e para diferentes métodos/janelas de remoção de agrupamentos.}
 			\label{fig:br_eq_record}
     \end{subfigure}%
-	\caption{Número cumulativo de tremores registrados por ano após 1900}
+	\caption{Número cumulativo de tremores registrados por ano após 1900. A magnitude usada foi a do catálogo. 
+	As diferentes respostas vêm das diferentes janelas utilizadas por cada método.}
 	\label{fig:eq_decluster_cum}
 \end{figure}
 
-No caso do \gsl{bsb2013} os resultados são relativamente equivalentes quando comparados aos resultados no caso do 
+No caso do \gls{bsb2013} os resultados são relativamente equivalentes quando comparados aos resultados no caso do 
 \glsdesc{iscgem}, onde é possível notar claramente as diferenças nos resultados de cada método de remoção de
 agrupamento. Isso demonstra que uma discussão mais aprofundada sobre os métodos de 
 remoção de agrupamentos é necessária mas está além dos propósitos desse texto.
@@ -429,7 +427,7 @@ esses gráficos para os catálogos considerados.
 	   \begin{subfigure}[b]{0.7\textwidth}
 		  	\centering
   			\includegraphics[width=1.00\textwidth]{time_mag_count_br_1960}
-			\caption{Catálogo \gls{bsb2013} a partir de 1960-2012}
+			\caption{Catálogo \gls{bsb2013} no período de 1960-2012}
 			\label{fig:tmf_br_1960}
        \end{subfigure}%
 
@@ -439,7 +437,7 @@ esses gráficos para os catálogos considerados.
 
 Na figura \ref{fig:qc_time_mag_count} é possível perceber, nos dois catálogos,
 que a quantidade de sismos no mesmo intervalo de magnitude varia bastante ao longo do tempo.
-Isso se deve à uma série de fatores, mas principalmente à capacidade de registro
+Isso se deve a uma série de fatores, mas principalmente à capacidade de registro
 da rede sismográfica, implantação de redes globais e 
 à modernização e aumento de sensibilidade de equipamentos.
 
@@ -453,7 +451,7 @@ Ela pode variar ao longo do tempo e do espaço (variação da densidade de esta�
 \end{p}
 
 O método de \citet{stepp_1971} permite obter a variação temporal da magnitude
-de completude \gls{sym:Mc} diretamente à partir do catálogo com um teste simples.
+de completude \gls{sym:Mc} diretamente a partir do catálogo com um teste simples.
 
 Esse procedimento analítico foi um dos primeiros a serem propostos para esse fim.
 Sejam $\lambda_1, \lambda_2, \cdots, \lambda_n$ o número de sismos por unidade de tempo.
@@ -466,7 +464,7 @@ média de sismicidade $\lambda$ por unidade de tempo é expressa por
 	}
 \label{eq:mwaf}
 \end{equation}
-Sua variância $\sigma_{\lambda}^2 =  \lambda/n$, com $n$ o número de intervalos.
+Sua variância é $\sigma_{\lambda}^2 =  \lambda/n$, onde $n$ o é número de intervalos.
 
 Com intervalos de 1 ano, $n$ intervalos é o período $T$ de observação com desvio padrão
 \begin{equation}
@@ -542,8 +540,9 @@ a malha para a estimativa de taxa de sismicidade para o Brasil
 foi de $1^o \times 1^o$, o \emph{valor-b} foi fixado em 1.
 
 Para o processamento pelo método de Frankel, utilizou-se o catálogo com os agrupamentos removidos,
-e a tabela de magnitude de completude menciona. A distância de correlação utilizada foi 
-de 150km. A zona de influência foi limitada em 3 vezes a distância de correlação.
+e a tabela de magnitude de completude mencionada. A distância de correlação utilizada apenas como exemplo
+foi de 150km a 68\% (totalizando uma influência total da ordem de 500km). A zona de influência foi limitada em 3 vezes a
+distância de correlação.
 
 %% ------------------------------------------------------------------------- %%
 \section{Woo, 1996}
@@ -558,13 +557,14 @@ O ajuste da função de largura de banda é apresentado na figura~\ref{fig:woo_b
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{woo_bandwidth} 
-  \caption{Ajuste da largura de banda para o método de Woo1996}
+  \caption{Ajuste da largura de banda para o método de Woo1996.
+  	Os valores de 1.38 e 1.18 para $a_0$ e $a_1$ foram obtidos por mínimos quadrados.}
   \label{fig:woo_b} 
 \end{figure}
 
 Apenas como comparação estão apresentados também os ajustes citados por \citet{beauval_2003} para a Espanha e Noruega.
 Como é possível observar o ajuste brasileiro apresenta distâncias médias sistematicamente maiores, provavelmente
-devido à escala continental do Brasil.
+devido à escala continental do Brasil ou ao baixo volume de registros.
 
 A função de núcleo utilizada foi a proposta pela equação \eqref{eq:k_kj}.
 
@@ -574,16 +574,16 @@ A função de núcleo utilizada foi a proposta pela equação \eqref{eq:k_kj}.
 \label{sec:proc_helmstetter}
 
 Utilizou-se, para a projeção da taxa de sismicidade, como catálogo de teste
-um filtro para o catálogos o período 1950-2007. Os sismos de 2007-2012 juntamente
+o período 1950-2007. Os sismos de 2007-2012 juntamente
 com os sismos ocorridos antes de 1950 foram colocados no catálogo-alvo.
 
-A escolha por colocar os sismos anteriores à 1950 no catálogo se deve à estabilidade
-da crosta no Brasil e da pouca capacidade histórica de observação,
-esses poucos sismos trazem informações importantes sobre essas fontes
-sismogênicas que não aparecem no catálogo no periodo escolhido para a aprendizagem.
+A escolha por colocar os sismos anteriores a 1950 no catálogo se deve ao baixo número
+de sismos no Brasil e de pouca capacidade histórica de observação, de forma que esses eventos trazem informações
+importantes sobre essas fontes sismogênicas que não aparecem no catálogo no periodo escolhido para a aprendizagem.
 
 Para a aprendizagem foram utilizados sismos com magnitudes acima de 3.8 buscando projeções para
-sismos com magnitudes acima de 4.0.
+sismos com magnitudes acima de 4.0. O pressuposto que é assumido é de que sismos com magnitudes grandes
+ocorrem onde geralmente ocorrem sismos de magnitude inferior.
 
 A figura \ref{fig:h_catalogue} apresenta os catálogos de treino e de teste usados na otimização.
 
@@ -618,7 +618,7 @@ como na figura \ref{fig:h_stationary}.
   \centering
   \includegraphics[width=.80\textwidth]{helmstetter_stationary_a} 
   \caption{Taxa de sismicidade estacionaria calculara a partir da mediana da taxa de sismicidade
-  modelada pelo método de Helmstetter2012 para uma determinada célula $r_0$}
+  modelada pelo método de Helmstetter para uma determinada célula $r_0$}
   \label{fig:h_stationary} 
 \end{figure}
 A célula em questão fica próxima à região de Mato Grosso e o pico de sismicidade em torno de 1955,
