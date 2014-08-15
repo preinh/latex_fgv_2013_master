@@ -582,7 +582,7 @@ de sismos no Brasil e de pouca capacidade histórica de observação, de forma q
 importantes sobre essas fontes sismogênicas que não aparecem no catálogo no periodo escolhido para a aprendizagem.
 
 Para a aprendizagem foram utilizados sismos com magnitudes acima de 3.8 buscando projeções para
-sismos com magnitudes acima de 4.0. O pressuposto que é assumido é de que sismos com magnitudes grandes
+sismos com magnitudes acima de 4.0. O pressuposto é de que sismos com magnitudes grandes
 ocorrem onde geralmente ocorrem sismos de magnitude inferior.
 
 A figura \ref{fig:h_catalogue} apresenta os catálogos de treino e de teste usados na otimização.
@@ -597,7 +597,8 @@ A figura \ref{fig:h_catalogue} apresenta os catálogos de treino e de teste usad
 As magnitudes de completude, embora haja espaço no modelo para sua representação espacial e temporal
 e, teoricamente, pudessem ser calculadas para o instante e posição de cada sismo para que fossem
 considerados com os pesos adequados, não foram consideradas dessa forma. Em vez disso a magnitude
-de completude utilizada foi a mínima magnitude no catálogo de teste ($m=3.8$) uniformemente para todo o catálogo.
+de completude utilizada foi a mínima magnitude no catálogo de teste ($M_c = M_d = 3.8$) 
+uniformemente para todo o catálogo.
 
 Os cálculos da largura de banda $h_i$ e $d_i$ de cada sismo é ilustrado no caso de um evento particular na figura
 \ref{fig:h_hidi}.
@@ -606,18 +607,46 @@ Os cálculos da largura de banda $h_i$ e $d_i$ de cada sismo é ilustrado no cas
   \centering
   \includegraphics[width=.80\textwidth]{helmstetter_hidi} 
   \caption{Exemplo da largura de banda para um determinado evento para o método de Helmstetter, com $k_{cnn} = 5$ e
-  $a_{cnn} = 100$}
+  $a_{cnn} = 100$ arbitrários, para um determinado tremor $i$. A linha pontilhada vermelha marca a distância temporal
+  $h_i$ e a linha pontilhada azul representa a distância espacial $d_i$}
   \label{fig:h_hidi} 
 \end{figure}
 
 Nota-se que as larguras de banda são escolhidas de forma a deixar $k_{cnn}$ eventos entre $h_i$ e $d_i$.
+O mais importante é notar que como $k_{cnn} = 5$ existem exatamente 5 outros eventos (bolinhas) no retângulo
+definido pelo estremo inferior esquerdo (0,0) e o superior direito ($h_i$,$d_i$). Fica evidente
+que os valores determinados para $h_i$ e $d_i$ são os que, preservando ao menos 5 eventos, minimiza a soma
+($h_i + a_{cnn}d_i$) mas que seriam outros valores caso a $a_{cnn}$ apontasse para outra proporção espaço-temporal.
+
+Em seguida, na figura \ref{fig:hidi_hist} são apresentadas as distribuições de $h_i$ e $d_i$ calculadas
+para os parâmetros já otimizados do modelo.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+		  	\centering
+			\includegraphics[width=1.00\textwidth]{hi_histogram}
+			\subcaption{Distribuição das larguras de banda temporais}
+			\label{fig:hi_hist}
+	\end{subfigure}%
+	\quad %~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+	\begin{subfigure}[b]{0.47\textwidth}
+		  	\centering
+			\includegraphics[width=1.00\textwidth]{di_histogram}
+			\subcaption{Distribuição das larguras de banda espaciais}
+			\label{fig:di_hist}
+    \end{subfigure}%
+	\caption{Distribuição das larguras de banda calculadas com os parâmetros otimizados do modelo}
+	\label{fig:hidi_hist}
+\end{figure}
+
 
 A taxa estacionária em cada célula é calculada a partir da mediana da taxa prevista pelo modelo em cada célula,
 como na figura \ref{fig:h_stationary}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.80\textwidth]{helmstetter_stationary_a} 
-  \caption{Taxa de sismicidade estacionaria calculara a partir da mediana da taxa de sismicidade
+  \includegraphics[width=.70\textwidth]{helmstetter_stationary_a} 
+  \caption{Taxa de sismicidade estacionaria calculada a partir da mediana da taxa de sismicidade
   modelada pelo método de Helmstetter para uma determinada célula $r_0$}
   \label{fig:h_stationary} 
 \end{figure}
