@@ -81,7 +81,10 @@ Openquake e os resultados estão apresentados na figura \ref{fig:pga_dourado_oq}
 
 Os resultados preservam as feições mas apresentam quantidade significativamente diferentes.
 Provavelmente devido ao fator de escala entre a magnitude e a área de ruptura utilizada,
-que sobrevalora a área de ruptura para magnitudes pequenas (menores que 5).
+que sobrevalora a área de ruptura para magnitudes pequenas (menores que 5). Uma sugestão
+para o futuro é separar, na definição das fonte, a \gls{mfd} em duas partes: na porção inferior
+usar um fator de escala que considere toda a ruptura ocorrendo no hipocentro. Na porção superior,
+a partir de uma certa magnitude, toma-se a ruptura tendo como geometria mais realista.
 
 
 %% ------------------------------------------------------------------------- %%
@@ -89,7 +92,8 @@ que sobrevalora a área de ruptura para magnitudes pequenas (menores que 5).
 \index{suavização da sismicidade}
 \label{sec:suavizacao_resultados}
 
-Os métodos avaliados resultaram nos mapas de \emph{valor-a} e de ameaça sísmica
+Os métodos avaliados resultaram nos mapas de 
+\emph{valor-a} e de ameaça sísmica
 que serão apresentados nessa seção.
 
 %% ------------------------------------------------------------------------- %%
@@ -103,7 +107,8 @@ a taxa de sismicidade suavizada gerada pelo modelo pode ser vista na figura \ref
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{a_frankel_br} 
-  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Frankel, 1995 }
+  \caption{Mapa do valor-a $[\log\left($\#tremores$/$ano$)/$área$\right)]$, usando o catálogo \gls{bsb2013} calculado
+  pelo método de Frankel, 1995 }
   \label{fig:a_fran_br} 
 \end{figure}
 
@@ -138,7 +143,7 @@ A ameaça é recuperada razoávelmente na plataforma continental.
 \index{Woo, 1996!resultados}
 \label{sec:woo_resultados}
 
-O ajuste dos parâmetros da função de largura de banda resultou em $h(m)=1.39e^{1.18\,m}$.
+O ajuste dos parâmetros da função de largura de banda resultou em $h(m)=1.39e^{1.18\,m}$km.
 
 Aplicando-se o método de Woo ao catálogo brasileiro desagrupado, a taxa de sismicidade suavizada 
 pode ser avaliada pela figura \ref{fig:a_woo}.
@@ -166,14 +171,23 @@ diretamente uma \gls{mfd} discreta.
   \label{fig:pga_woo_inc} 
 \end{figure}
 
-Coerentemente com a taxa de sismicidade modelada, as regiões norte, oeste e sul do país quase não figuraram 
-enquanto parte do sudeste, plataforma, Goiás e nordeste foram destacadas. Merece ser notado o maior valor de ameaça
-localizado em Pernambuco, dentre as três principais regiões mais ameaçadas do nordeste.
+Coerentemente com a taxa de sismicidade modelada. Não houve local em que a taxa
+da figura \ref{fig:a_woo} fosse baixa e que tenha apresentado grande ameaça.
+As regiões norte, oeste e sul do país quase não figuraram 
+enquanto parte do sudeste, plataforma continental, Goiás e nordeste foram
+destacadas. Merece ser notado o maior valor de ameaça localizado em Pernambuco, dentre as três principais regiões mais ameaçadas do nordeste.
 
 Para quantificar as diferenças nos cálculos de ameaça em decorrência da \gls{mfd} utilizada, em seguida é apresentado o
 mapa de ameaça (figura \ref{fig:pga_woo_cum}) calculado a partir das taxas geradas pelo modelo, mas utilizando-se do
 acumulado nos valores de magnitude acima do mínimo do catálogo e aplicando a transformação de Gutemberg-Richter 
-para obter o \emph{valor-a}.
+para obter o \emph{valor-a}. Nesse procedimento, a partir de certa magnitude minima de referencia, toma-se o cumulativo
+das taxas para magnitudes acima da referência, e, se projeta (por \gls{GR}) o \emph{valor-a}.
+
+Essa projeção acumula incertezas que não são inerentes ao método. A proposta de Woo é fornecer
+diretamente a distribuição de magnitudes em cada ponto da malha enquanto essa projeção é feita
+assumindo um \emph{valor-b} arbitrário.
+
+
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[t]{0.47\textwidth}
@@ -199,14 +213,15 @@ para obter o \emph{valor-a}.
 		\label{fig:pga_woo_dif} 
 	\end{subfigure}
 	\caption{Variação do resultado da ameaça em função do uso de diferentes 
-			\glspl{mfd} no OpenQuake}
+			\glspl{mfd} no OpenQuake.}
 	\label{fig:pga_woo} 
 \end{figure}
 
 A figura \ref{fig:pga_woo_dif} quantifica a diferença nos valores de ameaça obtitos quando 
 utilizadas as diferentes distribuições de frequência e magnitude. Nota-se que enquanto
-o modelo com \gls{mfd} incremental destaca principalmente o nordeste, o modelo utilizando o \emph{valor-a}
-cumulativo e uma \gls{mfd} truncada, destacou principalmente as ameaças no centro-oeste e sudeste.
+o modelo com \gls{mfd} incremental (método original) destaca principalmente o nordeste, o modelo utilizando o
+\emph{valor-a} cumulativo (projetado) e uma \gls{mfd} truncada, destacou principalmente as ameaças no centro-oeste e
+sudeste.
 
 
 %% ------------------------------------------------------------------------- %%
@@ -226,7 +241,7 @@ apresentados na tabela \ref{tab:hemlstetter}.
 		$a_{cnn}$ & 325 \\
 		$k_{cnn}$ & 1 \\
 	\end{tabular}
-	\caption{Parâmetros otimizados (método simplex) para o modelo de Helmstetter a partir do catálogo \gls{bsb2013}}
+	\caption{Parâmetros otimizados (método simplex) para o modelo de Helmstetter a partir do catálogo \gls{bsb2013}.}
 	\label{tab:hemlstetter}
 \end{table}
 
@@ -236,13 +251,18 @@ de longo-prazo pelo método proposto por Helmstetter pode ser visto na figura \r
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{a_helmstetter} 
-  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Helmstetter, 2012 }
+  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Helmstetter, 2012.}
   \label{fig:helm_r} 
 \end{figure}
 
 Observa-se que a sismicidade de regiões como amazônia, Mato-Grosso e Pará foram destacadas,
 enquanto no sudeste houve maior diluição. A sismicidade do nordeste aparece evidente, principalmente
-nas regiões do Ceará, Rio Grande do Norte e Pernambuco.
+nas regiões do Ceará, Rio Grande do Norte e Pernambuco. 
+
+É fato também que a sismicidade do centro-oeste rumo ao norte pelo estado de Goiás praticamente desapareceu.
+Isso se deve provavelmente ao fato de que grande parte dos sismos dessa região possuem magnitudes não 
+muito elevadas, tendo sido em grande parte removidas pela magnitude de completude como se pode notar nos catálogos
+de aprendizado e testes na figura \ref{fig:h_catalogues}.
 
 Na figura~\ref{fig:helm_h} estão os valores calculados para o mapa de ameaça 
 com as taxas de sismicidade suavizadas pelo método.
@@ -252,7 +272,7 @@ com as taxas de sismicidade suavizadas pelo método.
   \includegraphics[width=.80\textwidth]{pga_helmstetter} 
   \caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y), 
   		   calculado com o OpenQuake a partir das fontes sísmicas
-  		   determinas pelo método de Helmstetter, 2012 }
+  		   determinas pelo método de Helmstetter, 2012.}
   \label{fig:helm_h} 
 \end{figure}
 
