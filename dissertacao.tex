@@ -190,7 +190,7 @@ framexrightmargin=10pt
     \normalsize{}
     
     \vskip 0.5cm
-    \normalsize{Rio de Janeiro, junho de 2014}
+    \normalsize{Rio de Janeiro, agosto de 2014}
 \end{center}
 
 % ---------------------------------------------------------------------------- %
@@ -202,24 +202,23 @@ framexrightmargin=10pt
 %   desta página antes de compilar a versão
 %   final, corrigida, do trabalho
 %
-%
-\newpage
-\thispagestyle{empty}
-    \begin{center}
-        \vspace*{2.3 cm}
-	    \textbf{\Large{\glsdesc*{titulo_da_dissertacao}}}\\
-        \vspace*{2 cm}
-    \end{center}
+%\newpage
+%\thispagestyle{empty}
+%    \begin{center}
+%        \vspace*{2.3 cm}
+%	    \textbf{\Large{\glsdesc*{titulo_da_dissertacao}}}\\
+%        \vspace*{2 cm}
+%    \end{center}
 
-    \vskip 2cm
+%    \vskip 2cm
 
-    \begin{flushright}
-	Esta é a versão original da dissertação elaborada pelo\\
-	candidato Marlon Pirchiner, tal como \\
-	submetida à Comissão Julgadora.
-    \end{flushright}
+%    \begin{flushright}
+%	Esta é a versão original da dissertação elaborada pelo\\
+%	candidato Marlon Pirchiner, tal como \\
+%	submetida à Comissão Julgadora.
+%   \end{flushright}
 
-\pagebreak
+%\pagebreak
 
 
 % ---------------------------------------------------------------------------- %
@@ -235,39 +234,40 @@ framexrightmargin=10pt
 %   à Comissão Julgadora antes da defesa
 %
 %
-% \newpage
-% \thispagestyle{empty}
-%     \begin{center}
-%         \vspace*{2.3 cm}
-%         \textbf{\Large{Título do trabalho a ser apresentado à \\
-%         CPG para a dissertação/tese}}\\
-%         \vspace*{2 cm}
-%     \end{center}
+\newpage
+\thispagestyle{empty}
+     \begin{center}
+         \vspace*{2.3 cm}
+         \textbf{\Large{\glsdesc*{titulo_da_dissertacao}}}\\
+         \vspace*{2 cm}
+     \end{center}
 % 
-%     \vskip 2cm
+     \vskip 2cm
 % 
-%     \begin{flushright}
+     \begin{flushright}
 % 	Esta versão da dissertação/tese contém as correções e alterações sugeridas\\
 % 	pela Comissão Julgadora durante a defesa da versão original do trabalho,\\
 % 	realizada em 14/12/2010. Uma cópia da versão original está disponível no\\
 % 	Instituto de Matemática e Estatística da Universidade de São Paulo.
 % 
-%     \vskip 2cm
+     \vskip 2cm
 % 
-%     \end{flushright}
-%     \vskip 4.2cm
+     \end{flushright}
+     \vskip 4.2cm
 % 
-%     \begin{quote}
-%     \noindent Comissão Julgadora:
+     \begin{quote}
+     \noindent Comissão Julgadora:
 %     
-%     \begin{itemize}
-% 		\item Profª. Drª. Nome Completo (orientadora) - IME-USP [sem ponto final]
-% 		\item Prof. Dr. Nome Completo - IME-USP [sem ponto final]
-% 		\item Prof. Dr. Nome Completo - IMPA [sem ponto final]
-%     \end{itemize}
+     \begin{itemize}
+ 		\item Vincent Guigues (orientador) - EMAp/FGV-RJ 
+ 		\item Flávio Codeço Coelho - EMAp/FGV-RJ 
+ 		\item Marcelo Assumpção - IAG-USP 
+ 		\item Moacyr Alvim Horta Barbosa da Silva - EMAp/FGV-RJ 
+ 		\item Stéphane Drouet - ON 
+     \end{itemize}
 %       
-%     \end{quote}
-% \pagebreak
+     \end{quote}
+ \pagebreak
 
 
 \pagenumbering{roman}     % começamos a numerar 
@@ -278,6 +278,10 @@ framexrightmargin=10pt
 % Agradecimentos:
 % Se o candidato não quer fazer agradecimentos, deve simplesmente eliminar esta página 
 \chapter*{Agradecimentos}
+Aos meus familiares e amigos pela benevolência de sempre.
+
+À Didi.
+
 A todos do Grupo de Sismologia (e também a todo pessoal) do Instituto de
 Astronomia Geofísica e Ciências Atmosféricas (IAG) da Universidade de São Paulo (USP) 
 por todo apoio e suporte de sempre e durante o tempo em que
@@ -285,24 +289,21 @@ estive entre o curso de mestrado e o trabalho.
 
 Aos companheiros e professores pelas conversas e discussões ao longo do curso.
 
-Aos meus amigos e familiares pela benevolência de sempre.
-
-A Didi.
 % ---------------------------------------------------------------------------- %
 % Resumo
 \chapter*{Resumo}
 
 A avaliação de risco sísmico, fundamental para as decisões sobre as estruturas de obras de engenharia
-e mitigação de perdas, envolve fundamentalmente a análise de ameaça sísmica, ou o nível de 
-determinada medida de intensidade em certo local, no qual, durante um certo tempo, a chance de que 
-essa intensidade seja excedida seja de um certo percentil de probabilidade.
+e mitigação de perdas, envolve fundamentalmente a análise de ameaça sísmica. 
+Calcular a ameaça sísmica é o mesmo que calcular a probabilidade de que certo nível de 
+determinada medida de intensidade em certo local durante um certo tempo seja excedido.
 
 Dependendo da complexidade da atividade geológica essas estimativas podem ser bastante sofisticadas.
 Em locais com baixa sismicidade, como é o caso do Brasil, o pouco tempo (geológico) de observação
-e a pouca quantidade de informação são fonte de muitas incertezas e dificuldade de análise pelos métodos mais clássicos
+e a pouca quantidade de informação são fontes de muitas incertezas e dificuldade de análise pelos métodos mais clássicos
 e conhecidos que geralmente consideram, através de opiniões de especialistas, determinadas zonas sísmicas.
 
-Esse texto discute algumas técnicas de suavização e seus fundamentos como métodos alternativos ao zoneamento,
+Serão discutidas algumas técnicas de suavização e seus fundamentos como métodos alternativos ao zoneamento,
 em seguida se exemplifica suas aplicações no caso brasileiro.
 
 \noindent \textbf{Palavras-chave:} terremotos, ameaça sísmica, suavização.
@@ -318,8 +319,9 @@ Getúlio Vargas Foundation, Rio de Janeiro, 2014.
 \\
 
 Seismic risk assesment is crucial to make better decisions about engineering structures and loss mitigation.
-It involves, mainly, the evaluation of seismic hazard, or in other words, the level of some intensity ground motion
-measure, in a given site, which, in some time window, will be exceeded in some probability percentile.
+It involves, mainly, the evaluation of seismic hazard.
+Seismic hazard assesment is the computation of probability which the level of some ground
+motion intensity measure, in a given site, which, in some time window, will be exceeded.
 
 Depending on geological and tectonic complexity, the seismic hazard evaluation becomes more sofisticated.
 At sites with low seismicity, which is the brazilian case, the relative (geologically) low observation time
@@ -328,7 +330,7 @@ the standard analysis, which in general, consider expert opinions, to characteri
 seismicity into disjoint zones. 
 
 This text discusses some smoothing seismicity techniques and their theoretical foundations as alternative
-methods for seismicity characterization. Next, the methods are exemplified in the brasilian context.
+methods for seismicity characterization. Next, the methods are exemplified in the brazilian context.
 
 \noindent \textbf{Keywords:} earthquakes, seismic hazard, smoothing.
 

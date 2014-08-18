@@ -25,7 +25,7 @@ nas células de uma malha regular.
 \index{suavização!fundamentos, metodologia}
 \label{sec:04_smoothing_general}
 
-A idéia, no fundo, é estimar a distribuição espacial da taxa anual de sismicidade $R$
+A ideia, no fundo, é estimar a distribuição espacial da taxa anual de sismicidade $R$
 ou sua \gls{pdf}.
 O método mais simples conhecido para essa estimativa seria o histograma.
 
@@ -139,7 +139,7 @@ para que sua integral seja igual à unidade.
 
 
 Outra forma possível para a função de núcleo é uma Lei de Potência (\emph{power-law}), que decai com o 
-inverso do quadrado da distância, como na equação
+inverso do cubo da distância, como na equação
 \eqref{eq:kernel_pl} a seguir:
 
 \begin{equation}
@@ -236,7 +236,7 @@ para um domínio espacial infinito:
 	}
 	\label{eq:k_kj}
 \end{equation}
-onde \gls{sym:aW} é \glsdesc{sym:aW}.
+onde \gls{sym:aW} é, segundo \citet{verejones_1992}, \glsdesc{sym:aW}.
 
 Uma variante limitada para a função de núcleo foi proposta por \citet{verejones_1992}:\begin{equation}
 	\ensuremath{
@@ -260,7 +260,7 @@ Para a largura de banda \gls{sym:hm}, nos dois casos, Gordon Woo propôs utiliza
 	\label{eq:hm}
 \end{equation}
 em que $a_0$ e $a_1$ são determinados pela regressão entre a 
-distância média de cada tremor ao vizinho mais próximo $h$ em cada faixa de magnitude $m \pm \mathrm{d}m$.
+distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de magnitude $m \pm \mathrm{d}m$.
 É uma largura de banda dependente da magnitude.
 
 
@@ -272,12 +272,12 @@ distância média de cada tremor ao vizinho mais próximo $h$ em cada faixa de m
 O trabalho de  Agnès Helmstetter e Maximilian Werner \citep{helmstetter_2012} é focado principalmente em 
 projeção de longo-prazo para ocorrência de tremores/rupturas. 
 O principal pressuposto dessa técnica (seção \ref{sec:projecao}) é que nesse período a taxa
-de sismicidade se mantenha invariante.
+de sismicidade se mantenha invariante, que também é o pressuposto da \gls{psha}.
 
 \subsection{Taxa de sismicidade}
 Para eles a taxa de sismicidade em uma localização
 $\boldsymbol{r}$ e em um instante $t$ 
-em função dos tempos e localizações dos tremores $i$ em um catálogo 
+em função dos tempos $T_i$ e localizações $\mathbf{r}_i$ dos tremores $i$ em um catálogo 
 poderia ser expresso por
 \begin{equation}
 	\ensuremath{\gls{sym:R} = \sum_{i=1}^{N}{ \frac{1}{h_i\,{d_i}^2} \gls{sym:Kt}\gls{sym:Kr} }},
@@ -302,7 +302,7 @@ Os pesos $w(\boldsymbol{r}_i,t_i)$, calculados em cada tremor $i$, propostos por
 Gutemberg-Richter. Consideraram uma contribuição maior para a taxa de sismicidade daqueles sismos 
 que ocorreram onde e quando a magnitude de completude $M_c$ era maior que 
 a mínima magnitude $M_d$ do catálogo 
-em locais onde a magnitude do completude e o valor-b variam. 
+em locais onde a magnitude de completude e o \emph{valor-b} variam. 
 Note que o modelo de pesos acomoda bem variações espaciais e
 temporais tanto da magnitude de completude como do \emph{valor-b}. A expressão é a seguinte:
 \begin{equation}
@@ -327,7 +327,7 @@ com uma modificação para a função de núcleo temporal assimétrica.
 
 Para cada tremor $i$, as larguras de banda  $h_i$ e $d_i$ são escolhidas para
 minimizar a soma $h_i + a_{cnn}\,d_i$ sob a condição de que hajam ao menos $k_{cnn}$
-eventos à uma distância espacial menor que $d_i$ e, simultaneamente, estejam
+eventos a uma distância espacial menor que $d_i$ e, simultaneamente, estejam
 no intervalo de tempo $[t_i - h_i, t_i[$. O parâmetro $k_{cnn}$ controla a suavização 
 geral do modelo, e $a_{cnn}$ controla a importância relativa entre o tempo e o espaço.
 Valores altos de $a_{cnn}$ apresentam alta resolução espacial e, ao mesmo tempo, 
@@ -360,8 +360,10 @@ onde há maior densidade de informação, ou crescer onde há escassez de inform
 \subsection{Taxa de sismicidade estacionária}
 Mesmo havendo modelado a dependência com o tempo para distribuição da taxa de sismicidade,
 a taxa estacionária $\bar{R}$ que se preserva no longo-prazo em uma determinada localização  
-$\boldsymbol{r}_0$ é a que mais interessa à \gls{psha} e
-será o valor da mediana da taxa fornecida pelo modelo no período considerado:
+$\boldsymbol{r}_0$ é a que mais interessa à \gls{psha} e,
+segundo o método proposto por \citet{helmstetter_2012}, será definida
+pelo valor da mediana da taxa fornecida pelo modelo no
+período considerado:
 
 \begin{equation}
 	\ensuremath{
